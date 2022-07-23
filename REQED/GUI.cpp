@@ -60,6 +60,8 @@ Void GUI::button_Click(Object^ sender, EventArgs^ e) {
     
 }
 
+Void GUI:: button2_Click(Object^ sender, EventArgs^ e) {}
+
 Void GUI::neuToolStripMenuItem_Click(Object^ sender, EventArgs^ e) {}
 
 Void GUI::öffnenToolStripMenuItem_Click(Object^ sender, EventArgs^ e) {}
