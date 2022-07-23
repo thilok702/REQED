@@ -4,29 +4,23 @@ namespace REQED {
 	/// <summary>
 	/// Summary for GUI
 	/// </summary>
-	public ref class GUI: public System::Windows::Forms::Form
-	{
+	public ref class GUI: public System::Windows::Forms::Form {
 	public:
-		GUI(void)
-		{
+		GUI(void) {
 			InitializeComponent();
 		}
-
 	protected:
 		/// <summary>
 		/// Clean up any resources being used.
 		/// </summary>
-		~GUI()
-		{
-			if(components)
-			{
+		~GUI() {
+			if(components) {
 				delete components;
 			}
 		}
 	private: System::Windows::Forms::Label^ label1;
-	protected:
-	private: System::Windows::Forms::Button^ button1;
 
+	private: System::Windows::Forms::Button^ button1;
 
 	private: System::Windows::Forms::ToolStrip^ toolStrip1;
 	private: System::Windows::Forms::ToolStripDropDownButton^ toolStripDropDownButton1;
@@ -34,25 +28,23 @@ namespace REQED {
 	private: System::Windows::Forms::ToolStripMenuItem^ öffnenToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^ speichernToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^ neuToolStripMenuItem;
-
+	private: System::Windows::Forms::ToolStripDropDownButton^ toolStripDropDownButton2;
+	private: System::Windows::Forms::ToolStripMenuItem^ textDateiToolStripMenuItem;
+	private: System::Windows::Forms::ToolStripMenuItem^ jSONDateiToolStripMenuItem;
 
 	private: System::ComponentModel::IContainer^ components;
-
-
 
 	private:
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>
 
-
-#pragma region Windows Form Designer generated code
+	#pragma region Windows Form Designer generated code
 		/// <summary>
 		/// Required method for Designer support - do not modify
 		/// the contents of this method with the code editor.
 		/// </summary>
-		void InitializeComponent(void)
-		{
+		void InitializeComponent(void) {
 			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(GUI::typeid));
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->button1 = (gcnew System::Windows::Forms::Button());
@@ -61,6 +53,9 @@ namespace REQED {
 			this->neuToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->öffnenToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->speichernToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->toolStripDropDownButton2 = (gcnew System::Windows::Forms::ToolStripDropDownButton());
+			this->textDateiToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->jSONDateiToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->toolStrip1->SuspendLayout();
 			this->SuspendLayout();
 			// 
@@ -94,7 +89,10 @@ namespace REQED {
 			// 
 			this->toolStrip1->BackColor = System::Drawing::Color::White;
 			this->toolStrip1->GripStyle = System::Windows::Forms::ToolStripGripStyle::Hidden;
-			this->toolStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(1) { this->toolStripDropDownButton1 });
+			this->toolStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(2) {
+				this->toolStripDropDownButton1,
+					this->toolStripDropDownButton2
+			});
 			this->toolStrip1->Location = System::Drawing::Point(0, 0);
 			this->toolStrip1->Name = L"toolStrip1";
 			this->toolStrip1->Size = System::Drawing::Size(890, 25);
@@ -120,20 +118,52 @@ namespace REQED {
 			// neuToolStripMenuItem
 			// 
 			this->neuToolStripMenuItem->Name = L"neuToolStripMenuItem";
-			this->neuToolStripMenuItem->Size = System::Drawing::Size(132, 22);
+			this->neuToolStripMenuItem->Size = System::Drawing::Size(180, 22);
 			this->neuToolStripMenuItem->Text = L"neu";
+			this->neuToolStripMenuItem->Click += gcnew System::EventHandler(this, &GUI::neuToolStripMenuItem_Click);
 			// 
 			// öffnenToolStripMenuItem
 			// 
 			this->öffnenToolStripMenuItem->Name = L"öffnenToolStripMenuItem";
-			this->öffnenToolStripMenuItem->Size = System::Drawing::Size(132, 22);
+			this->öffnenToolStripMenuItem->Size = System::Drawing::Size(180, 22);
 			this->öffnenToolStripMenuItem->Text = L"öffnen";
+			this->öffnenToolStripMenuItem->Click += gcnew System::EventHandler(this, &GUI::öffnenToolStripMenuItem_Click);
 			// 
 			// speichernToolStripMenuItem
 			// 
 			this->speichernToolStripMenuItem->Name = L"speichernToolStripMenuItem";
-			this->speichernToolStripMenuItem->Size = System::Drawing::Size(132, 22);
+			this->speichernToolStripMenuItem->Size = System::Drawing::Size(180, 22);
 			this->speichernToolStripMenuItem->Text = L"speichern";
+			this->speichernToolStripMenuItem->Click += gcnew System::EventHandler(this, &GUI::speichernToolStripMenuItem_Click);
+			// 
+			// toolStripDropDownButton2
+			// 
+			this->toolStripDropDownButton2->DisplayStyle = System::Windows::Forms::ToolStripItemDisplayStyle::Text;
+			this->toolStripDropDownButton2->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(2) {
+				this->textDateiToolStripMenuItem,
+					this->jSONDateiToolStripMenuItem
+			});
+			this->toolStripDropDownButton2->Font = (gcnew System::Drawing::Font(L"Segoe UI", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->toolStripDropDownButton2->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"toolStripDropDownButton2.Image")));
+			this->toolStripDropDownButton2->Name = L"toolStripDropDownButton2";
+			this->toolStripDropDownButton2->ShowDropDownArrow = false;
+			this->toolStripDropDownButton2->Size = System::Drawing::Size(50, 22);
+			this->toolStripDropDownButton2->Text = L"Export";
+			// 
+			// textDateiToolStripMenuItem
+			// 
+			this->textDateiToolStripMenuItem->Name = L"textDateiToolStripMenuItem";
+			this->textDateiToolStripMenuItem->Size = System::Drawing::Size(180, 22);
+			this->textDateiToolStripMenuItem->Text = L"Text-Datei";
+			this->textDateiToolStripMenuItem->Click += gcnew System::EventHandler(this, &GUI::textDateiToolStripMenuItem_Click);
+			// 
+			// jSONDateiToolStripMenuItem
+			// 
+			this->jSONDateiToolStripMenuItem->Name = L"jSONDateiToolStripMenuItem";
+			this->jSONDateiToolStripMenuItem->Size = System::Drawing::Size(180, 22);
+			this->jSONDateiToolStripMenuItem->Text = L"JSON-Datei";
+			this->jSONDateiToolStripMenuItem->Click += gcnew System::EventHandler(this, &GUI::jSONDateiToolStripMenuItem_Click);
 			// 
 			// GUI
 			// 
@@ -160,9 +190,15 @@ namespace REQED {
 			this->PerformLayout();
 
 		}
-#pragma endregion
+	#pragma endregion
+
 	private: System::Void GUI_Load(System::Object^ sender, System::EventArgs^ e) {}
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e);
 	private: System::Void button_Click(System::Object^ sender, System::EventArgs ^ e);
+	private: System::Void neuToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e);
+	private: System::Void öffnenToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e);
+	private: System::Void speichernToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e);
+	private: System::Void textDateiToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e);
+	private: System::Void jSONDateiToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e);
 	};
 }

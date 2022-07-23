@@ -59,3 +59,13 @@ Void GUI::button_Click(Object^ sender, EventArgs^ e) {
     }
     
 }
+
+Void GUI::neuToolStripMenuItem_Click(Object^ sender, EventArgs^ e) {}
+
+Void GUI::öffnenToolStripMenuItem_Click(Object^ sender, EventArgs^ e) {}
+
+Void GUI::speichernToolStripMenuItem_Click(Object^ sender, EventArgs^ e) {}
+
+Void GUI::textDateiToolStripMenuItem_Click(Object^ sender, EventArgs^ e) {}
+
+Void GUI::jSONDateiToolStripMenuItem_Click(Object^ sender, EventArgs^ e) {}
