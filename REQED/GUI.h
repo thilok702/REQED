@@ -1,10 +1,12 @@
 #pragma once
+#include "Controller.h"
 
 namespace REQED {
 	/// <summary>
 	/// Summary for GUI
 	/// </summary>
 	public ref class GUI: public System::Windows::Forms::Form {
+	private: Controller* controller;
 	public:
 		GUI(void) {
 			InitializeComponent();
@@ -14,9 +16,10 @@ namespace REQED {
 		/// Clean up any resources being used.
 		/// </summary>
 		~GUI() {
-			if(components) {
+			/*if(components) {
 				delete components;
-			}
+			}*/
+			delete controller;
 		}
 	private: System::Windows::Forms::Label^ label1;
 
@@ -34,7 +37,7 @@ namespace REQED {
 	private: System::Windows::Forms::Label^ label2;
 	private: System::Windows::Forms::Button^ button2;
 
-	private: System::ComponentModel::IContainer^ components;
+	//private: System::ComponentModel::IContainer^ components;
 
 	private:
 		/// <summary>
@@ -68,7 +71,7 @@ namespace REQED {
 			this->label1->AutoSize = true;
 			this->label1->Font = (gcnew System::Drawing::Font(L"Arial", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label1->Location = System::Drawing::Point(70, 68);
+			this->label1->Location = System::Drawing::Point(23, 69);
 			this->label1->Name = L"label1";
 			this->label1->Size = System::Drawing::Size(219, 19);
 			this->label1->TabIndex = 0;
@@ -84,7 +87,7 @@ namespace REQED {
 			this->button1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->button1->ForeColor = System::Drawing::Color::White;
-			this->button1->Location = System::Drawing::Point(74, 91);
+			this->button1->Location = System::Drawing::Point(27, 91);
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(70, 30);
 			this->button1->TabIndex = 1;
@@ -127,7 +130,7 @@ namespace REQED {
 			this->neuToolStripMenuItem->Font = (gcnew System::Drawing::Font(L"Segoe UI", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->neuToolStripMenuItem->Name = L"neuToolStripMenuItem";
-			this->neuToolStripMenuItem->Size = System::Drawing::Size(140, 24);
+			this->neuToolStripMenuItem->Size = System::Drawing::Size(141, 24);
 			this->neuToolStripMenuItem->Text = L"neu";
 			this->neuToolStripMenuItem->Click += gcnew System::EventHandler(this, &GUI::neuToolStripMenuItem_Click);
 			// 
@@ -136,7 +139,7 @@ namespace REQED {
 			this->öffnenToolStripMenuItem->Font = (gcnew System::Drawing::Font(L"Segoe UI", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->öffnenToolStripMenuItem->Name = L"öffnenToolStripMenuItem";
-			this->öffnenToolStripMenuItem->Size = System::Drawing::Size(140, 24);
+			this->öffnenToolStripMenuItem->Size = System::Drawing::Size(141, 24);
 			this->öffnenToolStripMenuItem->Text = L"öffnen";
 			this->öffnenToolStripMenuItem->Click += gcnew System::EventHandler(this, &GUI::öffnenToolStripMenuItem_Click);
 			// 
@@ -146,7 +149,7 @@ namespace REQED {
 				static_cast<System::Byte>(0)));
 			this->speichernToolStripMenuItem->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"speichernToolStripMenuItem.Image")));
 			this->speichernToolStripMenuItem->Name = L"speichernToolStripMenuItem";
-			this->speichernToolStripMenuItem->Size = System::Drawing::Size(180, 24);
+			this->speichernToolStripMenuItem->Size = System::Drawing::Size(141, 24);
 			this->speichernToolStripMenuItem->Text = L"speichern";
 			this->speichernToolStripMenuItem->Click += gcnew System::EventHandler(this, &GUI::speichernToolStripMenuItem_Click);
 			// 
@@ -171,7 +174,7 @@ namespace REQED {
 				static_cast<System::Byte>(0)));
 			this->textDateiToolStripMenuItem->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"textDateiToolStripMenuItem.Image")));
 			this->textDateiToolStripMenuItem->Name = L"textDateiToolStripMenuItem";
-			this->textDateiToolStripMenuItem->Size = System::Drawing::Size(180, 24);
+			this->textDateiToolStripMenuItem->Size = System::Drawing::Size(155, 24);
 			this->textDateiToolStripMenuItem->Text = L"Text-Datei";
 			this->textDateiToolStripMenuItem->Click += gcnew System::EventHandler(this, &GUI::textDateiToolStripMenuItem_Click);
 			// 
@@ -181,7 +184,7 @@ namespace REQED {
 				static_cast<System::Byte>(0)));
 			this->jSONDateiToolStripMenuItem->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"jSONDateiToolStripMenuItem.Image")));
 			this->jSONDateiToolStripMenuItem->Name = L"jSONDateiToolStripMenuItem";
-			this->jSONDateiToolStripMenuItem->Size = System::Drawing::Size(180, 24);
+			this->jSONDateiToolStripMenuItem->Size = System::Drawing::Size(155, 24);
 			this->jSONDateiToolStripMenuItem->Text = L"JSON-Datei";
 			this->jSONDateiToolStripMenuItem->Click += gcnew System::EventHandler(this, &GUI::jSONDateiToolStripMenuItem_Click);
 			// 
@@ -190,7 +193,7 @@ namespace REQED {
 			this->label2->AutoSize = true;
 			this->label2->Font = (gcnew System::Drawing::Font(L"Arial", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label2->Location = System::Drawing::Point(70, 203);
+			this->label2->Location = System::Drawing::Point(23, 203);
 			this->label2->Name = L"label2";
 			this->label2->Size = System::Drawing::Size(266, 19);
 			this->label2->TabIndex = 4;
@@ -206,7 +209,7 @@ namespace REQED {
 			this->button2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->button2->ForeColor = System::Drawing::Color::White;
-			this->button2->Location = System::Drawing::Point(74, 225);
+			this->button2->Location = System::Drawing::Point(27, 225);
 			this->button2->Name = L"button2";
 			this->button2->Size = System::Drawing::Size(70, 30);
 			this->button2->TabIndex = 5;

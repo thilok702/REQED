@@ -26,13 +26,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Controller.cpp" />
+    <ClCompile Include="FunktionaleAnforderung.cpp" />
     <ClCompile Include="GUI.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="NichtFunktionaleAnforderung.cpp" />
+    <ClCompile Include="Projekt.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Controller.h" />
+    <ClInclude Include="FunktionaleAnforderung.h" />
     <ClInclude Include="GUI.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="ArtFunktionalitaet.h" />
+    <ClInclude Include="NichtFunktionaleAnforderung.h" />
+    <ClInclude Include="Projekt.h" />
+    <ClInclude Include="Verbindlichkeit.h" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="GUI.resx">

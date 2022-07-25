@@ -21,9 +21,39 @@
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Projekt.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Controller.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FunktionaleAnforderung.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="NichtFunktionaleAnforderung.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GUI.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Projekt.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ArtFunktionalitaet.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Verbindlichkeit.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Controller.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FunktionaleAnforderung.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="NichtFunktionaleAnforderung.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
