@@ -3,8 +3,8 @@
 #include <memory>
 using namespace std;
 
-Projekt::Projekt(string pfad) {
-
+Projekt::Projekt(string pfad_in) {
+	pfad = pfad_in;
 }
 
 void Projekt::projektSpeichern() {

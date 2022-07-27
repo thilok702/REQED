@@ -2,10 +2,13 @@
 #include "FunktionaleAnforderung.h"
 #include "NichtFunktionaleAnforderung.h"
 #include <string>
+#include <vector>
 
 class Projekt {
 private:
 	std::string pfad;
+	std::vector<FunktionaleAnforderung> F_anf;
+	std::vector<NichtFunktionaleAnforderung> NF_anf;
 public:
 	Projekt(std::string pfad);
 	void projektSpeichern();
