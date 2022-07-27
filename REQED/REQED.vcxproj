@@ -27,6 +27,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Controller.cpp" />
+    <ClCompile Include="fAnfGUI.cpp" />
     <ClCompile Include="FunktionaleAnforderung.cpp" />
     <ClCompile Include="GUI.cpp" />
     <ClCompile Include="main.cpp" />
@@ -35,6 +36,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Controller.h" />
+    <ClInclude Include="fAnfGUI.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="FunktionaleAnforderung.h" />
     <ClInclude Include="GUI.h">
       <FileType>CppForm</FileType>
@@ -45,6 +49,9 @@
     <ClInclude Include="Verbindlichkeit.h" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="fAnfGUI.resx">
+      <DependentUpon>fAnfGUI.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI.resx">
       <DependentUpon>GUI.h</DependentUpon>
     </EmbeddedResource>

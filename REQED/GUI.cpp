@@ -1,12 +1,40 @@
 #include "GUI.h"
+#include "fAnfGUI.h"
 using namespace std;
 using namespace System;
 using namespace System::Windows::Forms;
 using namespace System::IO;
 using namespace REQED;
 
-void GUI::button1_Click(Object^ sender, EventArgs^ e) {
-    //SaveFileDialog^ sfd = gcnew SaveFileDialog;
+void GUI::fAnfButton_Click(Object^ sender, EventArgs^ e) {
+    fAnfGUI fAnf;
+    fAnf.ShowDialog();
+}
+
+//Void GUI::button_Click(Object^ sender, EventArgs^ e) {
+//    for each(Control^ c in this->Controls) {
+//        if(c->GetHashCode() == sender->GetHashCode()) {
+//            this->Controls->Remove(c);
+//        }
+//    }
+//    
+//}
+
+Void GUI::nfAnfButton_Click(Object^ sender, EventArgs^ e) {
+    
+}
+
+Void GUI::neuToolStripMenuItem_Click(Object^ sender, EventArgs^ e) {}
+
+Void GUI::öffnenToolStripMenuItem_Click(Object^ sender, EventArgs^ e) {}
+
+Void GUI::speichernToolStripMenuItem_Click(Object^ sender, EventArgs^ e) {}
+
+Void GUI::textDateiToolStripMenuItem_Click(Object^ sender, EventArgs^ e) {}
+
+Void GUI::jSONDateiToolStripMenuItem_Click(Object^ sender, EventArgs^ e) {}
+
+//SaveFileDialog^ sfd = gcnew SaveFileDialog;
     //sfd->FileName = "test";
     //sfd->DefaultExt = ".RQ";
     //sfd->Filter = "REQED (*.RQ)|*.RQ";
@@ -38,36 +66,13 @@ void GUI::button1_Click(Object^ sender, EventArgs^ e) {
         label1->Text = gcnew String(obd->SelectedPath);
     }*/
 
-    int top = 50;
-    int left = 100;
-    for(int i = 0; i < 5; i++) {
-        Button^ button = gcnew Button;
-        button->Left = left;
-        button->Top = top;
-        button->Click += gcnew EventHandler(this, &GUI::button_Click);
-        this->Controls->Add(button);
-        top += button->Height + 2;
-    }
-    
-}
-
-Void GUI::button_Click(Object^ sender, EventArgs^ e) {
-    for each(Control^ c in this->Controls) {
-        if(c->GetHashCode() == sender->GetHashCode()) {
-            this->Controls->Remove(c);
-        }
-    }
-    
-}
-
-Void GUI:: button2_Click(Object^ sender, EventArgs^ e) {}
-
-Void GUI::neuToolStripMenuItem_Click(Object^ sender, EventArgs^ e) {}
-
-Void GUI::öffnenToolStripMenuItem_Click(Object^ sender, EventArgs^ e) {}
-
-Void GUI::speichernToolStripMenuItem_Click(Object^ sender, EventArgs^ e) {}
-
-Void GUI::textDateiToolStripMenuItem_Click(Object^ sender, EventArgs^ e) {}
-
-Void GUI::jSONDateiToolStripMenuItem_Click(Object^ sender, EventArgs^ e) {}
+    //int top = 50;
+    //int left = 100;
+    //for(int i = 0; i < 5; i++) {
+    //    Button^ button = gcnew Button;
+    //    button->Left = left;
+    //    button->Top = top;
+    //    button->Click += gcnew EventHandler(this, &GUI::button_Click);
+    //    this->Controls->Add(button);
+    //    top += button->Height + 2;
+    //}

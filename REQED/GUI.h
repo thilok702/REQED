@@ -9,6 +9,7 @@ namespace REQED {
 	private: Controller* controller;
 	public:
 		GUI(void) {
+			controller = new Controller();
 			InitializeComponent();
 		}
 	protected:
@@ -21,28 +22,31 @@ namespace REQED {
 			}*/
 			delete controller;
 		}
-	private: System::Windows::Forms::Label^ label1;
+	private: System::Windows::Forms::Label^ fAnf;
+	private: System::Windows::Forms::Button^ fAnfButton;
+	protected:
 
-	private: System::Windows::Forms::Button^ button1;
 
 	private: System::Windows::Forms::ToolStrip^ toolStrip1;
-	private: System::Windows::Forms::ToolStripDropDownButton^ toolStripDropDownButton1;
+	private: System::Windows::Forms::ToolStripDropDownButton^ DateiDropDown;
 
 	private: System::Windows::Forms::ToolStripMenuItem^ öffnenToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^ speichernToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^ neuToolStripMenuItem;
-	private: System::Windows::Forms::ToolStripDropDownButton^ toolStripDropDownButton2;
+	private: System::Windows::Forms::ToolStripDropDownButton^ exportDropDown;
+
 	private: System::Windows::Forms::ToolStripMenuItem^ textDateiToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^ jSONDateiToolStripMenuItem;
-	private: System::Windows::Forms::Label^ label2;
-	private: System::Windows::Forms::Button^ button2;
+	private: System::Windows::Forms::Label^ nfAnf;
+	private: System::Windows::Forms::Button^ nfAnfButton;
 
-	//private: System::ComponentModel::IContainer^ components;
+
 
 	private:
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>
+		System::ComponentModel::IContainer^ components;
 
 	#pragma region Windows Form Designer generated code
 		/// <summary>
@@ -51,79 +55,76 @@ namespace REQED {
 		/// </summary>
 		void InitializeComponent(void) {
 			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(GUI::typeid));
-			this->label1 = (gcnew System::Windows::Forms::Label());
-			this->button1 = (gcnew System::Windows::Forms::Button());
+			this->fAnf = (gcnew System::Windows::Forms::Label());
+			this->fAnfButton = (gcnew System::Windows::Forms::Button());
 			this->toolStrip1 = (gcnew System::Windows::Forms::ToolStrip());
-			this->toolStripDropDownButton1 = (gcnew System::Windows::Forms::ToolStripDropDownButton());
+			this->DateiDropDown = (gcnew System::Windows::Forms::ToolStripDropDownButton());
 			this->neuToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->öffnenToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->speichernToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->toolStripDropDownButton2 = (gcnew System::Windows::Forms::ToolStripDropDownButton());
+			this->exportDropDown = (gcnew System::Windows::Forms::ToolStripDropDownButton());
 			this->textDateiToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->jSONDateiToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->label2 = (gcnew System::Windows::Forms::Label());
-			this->button2 = (gcnew System::Windows::Forms::Button());
+			this->nfAnf = (gcnew System::Windows::Forms::Label());
+			this->nfAnfButton = (gcnew System::Windows::Forms::Button());
 			this->toolStrip1->SuspendLayout();
 			this->SuspendLayout();
 			// 
-			// label1
+			// fAnf
 			// 
-			this->label1->AutoSize = true;
-			this->label1->Font = (gcnew System::Drawing::Font(L"Arial", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->fAnf->AutoSize = true;
+			this->fAnf->Font = (gcnew System::Drawing::Font(L"Arial", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label1->Location = System::Drawing::Point(23, 69);
-			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(219, 19);
-			this->label1->TabIndex = 0;
-			this->label1->Text = L"funktionale Anforderungen:";
+			this->fAnf->Location = System::Drawing::Point(23, 69);
+			this->fAnf->Name = L"fAnf";
+			this->fAnf->Size = System::Drawing::Size(219, 19);
+			this->fAnf->TabIndex = 0;
+			this->fAnf->Text = L"funktionale Anforderungen:";
 			// 
-			// button1
+			// fAnfButton
 			// 
-			this->button1->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(192)), static_cast<System::Int32>(static_cast<System::Byte>(0)),
+			this->fAnfButton->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(192)), static_cast<System::Int32>(static_cast<System::Byte>(0)),
 				static_cast<System::Int32>(static_cast<System::Byte>(0)));
-			this->button1->FlatAppearance->BorderColor = System::Drawing::Color::Black;
-			this->button1->FlatAppearance->BorderSize = 0;
-			this->button1->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->button1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->fAnfButton->FlatAppearance->BorderColor = System::Drawing::Color::Black;
+			this->fAnfButton->FlatAppearance->BorderSize = 0;
+			this->fAnfButton->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->fAnfButton->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->button1->ForeColor = System::Drawing::Color::White;
-			this->button1->Location = System::Drawing::Point(27, 91);
-			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(70, 30);
-			this->button1->TabIndex = 1;
-			this->button1->Text = L"neu";
-			this->button1->UseVisualStyleBackColor = false;
-			this->button1->Click += gcnew System::EventHandler(this, &GUI::button1_Click);
+			this->fAnfButton->ForeColor = System::Drawing::Color::White;
+			this->fAnfButton->Location = System::Drawing::Point(27, 91);
+			this->fAnfButton->Name = L"fAnfButton";
+			this->fAnfButton->Size = System::Drawing::Size(70, 30);
+			this->fAnfButton->TabIndex = 1;
+			this->fAnfButton->Text = L"neu";
+			this->fAnfButton->UseVisualStyleBackColor = false;
+			this->fAnfButton->Click += gcnew System::EventHandler(this, &GUI::fAnfButton_Click);
 			// 
 			// toolStrip1
 			// 
 			this->toolStrip1->BackColor = System::Drawing::Color::White;
 			this->toolStrip1->GripStyle = System::Windows::Forms::ToolStripGripStyle::Hidden;
-			this->toolStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(2) {
-				this->toolStripDropDownButton1,
-					this->toolStripDropDownButton2
-			});
+			this->toolStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(2) { this->DateiDropDown, this->exportDropDown });
 			this->toolStrip1->Location = System::Drawing::Point(0, 0);
 			this->toolStrip1->Name = L"toolStrip1";
 			this->toolStrip1->Size = System::Drawing::Size(890, 27);
 			this->toolStrip1->TabIndex = 3;
 			this->toolStrip1->Text = L"toolStrip1";
 			// 
-			// toolStripDropDownButton1
+			// DateiDropDown
 			// 
-			this->toolStripDropDownButton1->DisplayStyle = System::Windows::Forms::ToolStripItemDisplayStyle::Text;
-			this->toolStripDropDownButton1->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(3) {
+			this->DateiDropDown->DisplayStyle = System::Windows::Forms::ToolStripItemDisplayStyle::Text;
+			this->DateiDropDown->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(3) {
 				this->neuToolStripMenuItem,
 					this->öffnenToolStripMenuItem, this->speichernToolStripMenuItem
 			});
-			this->toolStripDropDownButton1->Font = (gcnew System::Drawing::Font(L"Segoe UI", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->DateiDropDown->Font = (gcnew System::Drawing::Font(L"Segoe UI", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->toolStripDropDownButton1->ForeColor = System::Drawing::Color::Black;
-			this->toolStripDropDownButton1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"toolStripDropDownButton1.Image")));
-			this->toolStripDropDownButton1->Name = L"toolStripDropDownButton1";
-			this->toolStripDropDownButton1->ShowDropDownArrow = false;
-			this->toolStripDropDownButton1->Size = System::Drawing::Size(49, 24);
-			this->toolStripDropDownButton1->Text = L"Datei";
+			this->DateiDropDown->ForeColor = System::Drawing::Color::Black;
+			this->DateiDropDown->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"DateiDropDown.Image")));
+			this->DateiDropDown->Name = L"DateiDropDown";
+			this->DateiDropDown->ShowDropDownArrow = false;
+			this->DateiDropDown->Size = System::Drawing::Size(49, 24);
+			this->DateiDropDown->Text = L"Datei";
 			// 
 			// neuToolStripMenuItem
 			// 
@@ -153,20 +154,20 @@ namespace REQED {
 			this->speichernToolStripMenuItem->Text = L"speichern";
 			this->speichernToolStripMenuItem->Click += gcnew System::EventHandler(this, &GUI::speichernToolStripMenuItem_Click);
 			// 
-			// toolStripDropDownButton2
+			// exportDropDown
 			// 
-			this->toolStripDropDownButton2->DisplayStyle = System::Windows::Forms::ToolStripItemDisplayStyle::Text;
-			this->toolStripDropDownButton2->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(2) {
+			this->exportDropDown->DisplayStyle = System::Windows::Forms::ToolStripItemDisplayStyle::Text;
+			this->exportDropDown->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(2) {
 				this->textDateiToolStripMenuItem,
 					this->jSONDateiToolStripMenuItem
 			});
-			this->toolStripDropDownButton2->Font = (gcnew System::Drawing::Font(L"Segoe UI", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->exportDropDown->Font = (gcnew System::Drawing::Font(L"Segoe UI", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->toolStripDropDownButton2->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"toolStripDropDownButton2.Image")));
-			this->toolStripDropDownButton2->Name = L"toolStripDropDownButton2";
-			this->toolStripDropDownButton2->ShowDropDownArrow = false;
-			this->toolStripDropDownButton2->Size = System::Drawing::Size(56, 24);
-			this->toolStripDropDownButton2->Text = L"Export";
+			this->exportDropDown->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"exportDropDown.Image")));
+			this->exportDropDown->Name = L"exportDropDown";
+			this->exportDropDown->ShowDropDownArrow = false;
+			this->exportDropDown->Size = System::Drawing::Size(56, 24);
+			this->exportDropDown->Text = L"Export";
 			// 
 			// textDateiToolStripMenuItem
 			// 
@@ -188,34 +189,34 @@ namespace REQED {
 			this->jSONDateiToolStripMenuItem->Text = L"JSON-Datei";
 			this->jSONDateiToolStripMenuItem->Click += gcnew System::EventHandler(this, &GUI::jSONDateiToolStripMenuItem_Click);
 			// 
-			// label2
+			// nfAnf
 			// 
-			this->label2->AutoSize = true;
-			this->label2->Font = (gcnew System::Drawing::Font(L"Arial", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->nfAnf->AutoSize = true;
+			this->nfAnf->Font = (gcnew System::Drawing::Font(L"Arial", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label2->Location = System::Drawing::Point(23, 203);
-			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(266, 19);
-			this->label2->TabIndex = 4;
-			this->label2->Text = L"nicht funktionale Anfortderungen:";
+			this->nfAnf->Location = System::Drawing::Point(23, 203);
+			this->nfAnf->Name = L"nfAnf";
+			this->nfAnf->Size = System::Drawing::Size(266, 19);
+			this->nfAnf->TabIndex = 4;
+			this->nfAnf->Text = L"nicht funktionale Anfortderungen:";
 			// 
-			// button2
+			// nfAnfButton
 			// 
-			this->button2->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(192)), static_cast<System::Int32>(static_cast<System::Byte>(0)),
+			this->nfAnfButton->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(192)), static_cast<System::Int32>(static_cast<System::Byte>(0)),
 				static_cast<System::Int32>(static_cast<System::Byte>(0)));
-			this->button2->FlatAppearance->BorderColor = System::Drawing::Color::Black;
-			this->button2->FlatAppearance->BorderSize = 0;
-			this->button2->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->button2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->nfAnfButton->FlatAppearance->BorderColor = System::Drawing::Color::Black;
+			this->nfAnfButton->FlatAppearance->BorderSize = 0;
+			this->nfAnfButton->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->nfAnfButton->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->button2->ForeColor = System::Drawing::Color::White;
-			this->button2->Location = System::Drawing::Point(27, 225);
-			this->button2->Name = L"button2";
-			this->button2->Size = System::Drawing::Size(70, 30);
-			this->button2->TabIndex = 5;
-			this->button2->Text = L"neu";
-			this->button2->UseVisualStyleBackColor = false;
-			this->button2->Click += gcnew System::EventHandler(this, &GUI::button2_Click);
+			this->nfAnfButton->ForeColor = System::Drawing::Color::White;
+			this->nfAnfButton->Location = System::Drawing::Point(27, 225);
+			this->nfAnfButton->Name = L"nfAnfButton";
+			this->nfAnfButton->Size = System::Drawing::Size(70, 30);
+			this->nfAnfButton->TabIndex = 5;
+			this->nfAnfButton->Text = L"neu";
+			this->nfAnfButton->UseVisualStyleBackColor = false;
+			this->nfAnfButton->Click += gcnew System::EventHandler(this, &GUI::nfAnfButton_Click);
 			// 
 			// GUI
 			// 
@@ -225,11 +226,11 @@ namespace REQED {
 			this->AutoSize = true;
 			this->BackColor = System::Drawing::Color::White;
 			this->ClientSize = System::Drawing::Size(890, 613);
-			this->Controls->Add(this->button2);
-			this->Controls->Add(this->label2);
+			this->Controls->Add(this->nfAnfButton);
+			this->Controls->Add(this->nfAnf);
 			this->Controls->Add(this->toolStrip1);
-			this->Controls->Add(this->button1);
-			this->Controls->Add(this->label1);
+			this->Controls->Add(this->fAnfButton);
+			this->Controls->Add(this->fAnf);
 			this->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->ForeColor = System::Drawing::Color::Black;
@@ -247,13 +248,13 @@ namespace REQED {
 	#pragma endregion
 
 	private: System::Void GUI_Load(System::Object^ sender, System::EventArgs^ e) {}
-	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e);
-	private: System::Void button_Click(System::Object^ sender, System::EventArgs ^ e);
+	//private: System::Void button_Click(System::Object^ sender, System::EventArgs ^ e);
 	private: System::Void neuToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e);
 	private: System::Void öffnenToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e);
 	private: System::Void speichernToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e);
 	private: System::Void textDateiToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e);
 	private: System::Void jSONDateiToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e);
-	private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e);
+	private: System::Void fAnfButton_Click(System::Object^ sender, System::EventArgs^ e);
+	private: System::Void nfAnfButton_Click(System::Object^ sender, System::EventArgs^ e);
 	};
 }

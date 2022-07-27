@@ -3,12 +3,13 @@
 #include "NichtFunktionaleAnforderung.h"
 #include <string>
 #include <vector>
+#include <memory>
 
 class Projekt {
 private:
 	std::string pfad;
-	std::vector<shared_ptr<FunktionaleAnforderung>> F_anf;
-	std::vector < shared_ptr<NichtFunktionaleAnforderung>> NF_anf;
+	std::vector<std::shared_ptr<FunktionaleAnforderung>> F_anf;
+	std::vector<std::shared_ptr<NichtFunktionaleAnforderung>> NF_anf;
 public:
 	Projekt(std::string pfad);
 	void projektSpeichern();
