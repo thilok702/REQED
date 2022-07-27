@@ -43,9 +43,10 @@ String^ fAnfGUI::getFunktionalitaet(int index) {
 }
 
 Void fAnfGUI::okButton_Click(Object^ sender, EventArgs^ e) {
-	string anf[6] = {"a", "b", "c"};/*msclr::interop::marshal_as<string>(bedingungBox->Text), msclr::interop::marshal_as<string>(systemBox->Text),
+	string anf[6] = {msclr::interop::marshal_as<string>(bedingungBox->Text), msclr::interop::marshal_as<string>(systemBox->Text),
 					msclr::interop::marshal_as<string>(objektBox->Text), msclr::interop::marshal_as<string>(prozesswortBox->Text),
-					msclr::interop::marshal_as<string>(funktionalitaetCombobox->Text), msclr::interop::marshal_as<string>(verbindlichkeitCombobox->Text)};*/
+					msclr::interop::marshal_as<string>(funktionalitaetCombobox->Text), msclr::interop::marshal_as<string>(verbindlichkeitCombobox->Text)};
+	bedingung->Text = gcnew String(anf[0].c_str());
 	controller->processInput(3, anf);
 }
 
