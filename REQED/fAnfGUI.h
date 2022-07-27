@@ -51,6 +51,7 @@ namespace REQED {
 	private: System::Windows::Forms::Label^ anforderung;
 	private: System::Windows::Forms::Button^ okButton;
 	private: System::Windows::Forms::Button^ abbrechenButton;
+	private: System::Windows::Forms::Label^ fehler;
 
 	private:
 		/// <summary>
@@ -80,6 +81,7 @@ namespace REQED {
 			this->anforderung = (gcnew System::Windows::Forms::Label());
 			this->okButton = (gcnew System::Windows::Forms::Button());
 			this->abbrechenButton = (gcnew System::Windows::Forms::Button());
+			this->fehler = (gcnew System::Windows::Forms::Label());
 			this->SuspendLayout();
 			// 
 			// bedingung
@@ -124,7 +126,7 @@ namespace REQED {
 			this->verbindlichkeitCombobox->Location = System::Drawing::Point(153, 131);
 			this->verbindlichkeitCombobox->Name = L"verbindlichkeitCombobox";
 			this->verbindlichkeitCombobox->Size = System::Drawing::Size(121, 24);
-			this->verbindlichkeitCombobox->TabIndex = 4;
+			this->verbindlichkeitCombobox->TabIndex = 1;
 			this->verbindlichkeitCombobox->Text = L"muss";
 			this->verbindlichkeitCombobox->SelectedIndexChanged += gcnew System::EventHandler(this, &fAnfGUI::changed);
 			this->verbindlichkeitCombobox->TextUpdate += gcnew System::EventHandler(this, &fAnfGUI::changed);
@@ -179,7 +181,7 @@ namespace REQED {
 			this->systemBox->Location = System::Drawing::Point(307, 133);
 			this->systemBox->Name = L"systemBox";
 			this->systemBox->Size = System::Drawing::Size(100, 22);
-			this->systemBox->TabIndex = 8;
+			this->systemBox->TabIndex = 2;
 			this->systemBox->TextChanged += gcnew System::EventHandler(this, &fAnfGUI::changed);
 			// 
 			// objektBox
@@ -189,7 +191,7 @@ namespace REQED {
 			this->objektBox->Location = System::Drawing::Point(628, 131);
 			this->objektBox->Name = L"objektBox";
 			this->objektBox->Size = System::Drawing::Size(100, 22);
-			this->objektBox->TabIndex = 9;
+			this->objektBox->TabIndex = 4;
 			this->objektBox->TextChanged += gcnew System::EventHandler(this, &fAnfGUI::changed);
 			// 
 			// prozesswortBox
@@ -199,7 +201,7 @@ namespace REQED {
 			this->prozesswortBox->Location = System::Drawing::Point(765, 131);
 			this->prozesswortBox->Name = L"prozesswortBox";
 			this->prozesswortBox->Size = System::Drawing::Size(100, 22);
-			this->prozesswortBox->TabIndex = 10;
+			this->prozesswortBox->TabIndex = 5;
 			this->prozesswortBox->TextChanged += gcnew System::EventHandler(this, &fAnfGUI::changed);
 			// 
 			// funktionalitaetCombobox
@@ -214,7 +216,7 @@ namespace REQED {
 			this->funktionalitaetCombobox->Location = System::Drawing::Point(437, 131);
 			this->funktionalitaetCombobox->Name = L"funktionalitaetCombobox";
 			this->funktionalitaetCombobox->Size = System::Drawing::Size(155, 24);
-			this->funktionalitaetCombobox->TabIndex = 11;
+			this->funktionalitaetCombobox->TabIndex = 3;
 			this->funktionalitaetCombobox->Text = L"Systemaktivität";
 			this->funktionalitaetCombobox->SelectedIndexChanged += gcnew System::EventHandler(this, &fAnfGUI::changed);
 			// 
@@ -240,7 +242,7 @@ namespace REQED {
 			this->okButton->Location = System::Drawing::Point(298, 326);
 			this->okButton->Name = L"okButton";
 			this->okButton->Size = System::Drawing::Size(100, 30);
-			this->okButton->TabIndex = 13;
+			this->okButton->TabIndex = 6;
 			this->okButton->Text = L"OK";
 			this->okButton->UseVisualStyleBackColor = false;
 			this->okButton->Click += gcnew System::EventHandler(this, &fAnfGUI::okButton_Click);
@@ -257,16 +259,28 @@ namespace REQED {
 			this->abbrechenButton->Location = System::Drawing::Point(460, 326);
 			this->abbrechenButton->Name = L"abbrechenButton";
 			this->abbrechenButton->Size = System::Drawing::Size(100, 30);
-			this->abbrechenButton->TabIndex = 15;
+			this->abbrechenButton->TabIndex = 7;
 			this->abbrechenButton->Text = L"abbrechen";
 			this->abbrechenButton->UseVisualStyleBackColor = false;
 			this->abbrechenButton->Click += gcnew System::EventHandler(this, &fAnfGUI::abbrechenButton_Click);
+			// 
+			// fehler
+			// 
+			this->fehler->AutoSize = true;
+			this->fehler->Font = (gcnew System::Drawing::Font(L"Arial", 9.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->fehler->ForeColor = System::Drawing::Color::Red;
+			this->fehler->Location = System::Drawing::Point(153, 37);
+			this->fehler->Name = L"fehler";
+			this->fehler->Size = System::Drawing::Size(0, 16);
+			this->fehler->TabIndex = 13;
 			// 
 			// fAnfGUI
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(897, 396);
+			this->Controls->Add(this->fehler);
 			this->Controls->Add(this->abbrechenButton);
 			this->Controls->Add(this->okButton);
 			this->Controls->Add(this->anforderung);
@@ -297,5 +311,5 @@ namespace REQED {
 	private: System::String^ getFunktionalitaet(int index);
 	private: System::Void okButton_Click(System::Object^ sender, System::EventArgs^ e);
 	private: System::Void abbrechenButton_Click(System::Object^ sender, System::EventArgs^ e);
-	};
+};
 }

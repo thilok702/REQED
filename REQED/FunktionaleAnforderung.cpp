@@ -5,11 +5,53 @@
 using namespace std;
 
 FunktionaleAnforderung::FunktionaleAnforderung(string bed, string sys, string obj, string proz, ArtFunktionalitaet funkt, Verbindlichkeit verb) {
-
+	bedingung = bed;
+	system = sys;
+	objekt = obj;
+	prozesswort = proz;
+	funktionalitaet = funkt;
+	verbindlichkeit = verb;
 }
 
-void FunktionaleAnforderung::toString() {
+string FunktionaleAnforderung::toString() {
+	string anf;
+	if(bedingung.length() == 0) {
+		anf += system + " ";
+		anf += getVerbindlichkeit(verbindlichkeit) + " ";
+		anf += getFunktionalitaet(funktionalitaet) + " ";
+		anf += objekt + " ";
+		anf += prozesswort + ".";
+	} else {
+		anf += bedingung + " ";
+		anf += getVerbindlichkeit(verbindlichkeit) + " ";
+		anf += system + " ";
+		anf += getFunktionalitaet(funktionalitaet) + " ";
+		anf += objekt + " ";
+		anf += prozesswort + ".";
+	}
+	return anf;
+}
 
+string FunktionaleAnforderung::getVerbindlichkeit(Verbindlichkeit verb) {
+	switch(verb) {
+	case muss:
+		return "muss";
+	case sollte:
+		return "soltte";
+	case wird:
+		return "wird";
+	}
+	return "";
+}
+
+string FunktionaleAnforderung::getFunktionalitaet(ArtFunktionalitaet funk) {
+	switch(funk) {
+	case Benutzerinteraktion:
+		return "dem/der Benutzer/-in die Möglichkeit bieten";
+	case Schnittstellenanforderung:
+		return "fähig sein";
+	}
+	return "";
 }
 
 string FunktionaleAnforderung::getBedingung() {

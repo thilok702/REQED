@@ -7,7 +7,7 @@
 using namespace std;
 
 Controller::Controller() {
-
+	aktProjekt = make_unique<Projekt>("hui");
 }
 
 void Controller::schliessen() {
