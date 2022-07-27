@@ -7,7 +7,7 @@ using namespace System::IO;
 using namespace REQED;
 
 void GUI::fAnfButton_Click(Object^ sender, EventArgs^ e) {
-    fAnfGUI fAnf;
+    fAnfGUI fAnf(controller);
     fAnf.ShowDialog();
 }
 

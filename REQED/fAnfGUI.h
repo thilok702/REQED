@@ -126,6 +126,7 @@ namespace REQED {
 			this->verbindlichkeitCombobox->Size = System::Drawing::Size(121, 24);
 			this->verbindlichkeitCombobox->TabIndex = 4;
 			this->verbindlichkeitCombobox->Text = L"muss";
+			this->verbindlichkeitCombobox->SelectedIndexChanged += gcnew System::EventHandler(this, &fAnfGUI::changed);
 			this->verbindlichkeitCombobox->TextUpdate += gcnew System::EventHandler(this, &fAnfGUI::changed);
 			// 
 			// funktionalitaet
@@ -215,7 +216,7 @@ namespace REQED {
 			this->funktionalitaetCombobox->Size = System::Drawing::Size(155, 24);
 			this->funktionalitaetCombobox->TabIndex = 11;
 			this->funktionalitaetCombobox->Text = L"Systemaktivität";
-			this->funktionalitaetCombobox->TextUpdate += gcnew System::EventHandler(this, &fAnfGUI::changed);
+			this->funktionalitaetCombobox->SelectedIndexChanged += gcnew System::EventHandler(this, &fAnfGUI::changed);
 			// 
 			// anforderung
 			// 

@@ -15,10 +15,10 @@ public:
 	void projektSpeichern();
 	void exportTXT(std::string pfad);
 	void exportJSON(std::string pfad);
-	void funktionaleAnforderungHinzu(FunktionaleAnforderung anf);
-	void nichtFuntkionaleAnforderungHinzu(NichtFunktionaleAnforderung anf);
-	std::shared_ptr<FunktionaleAnforderung> funktionaleAnforderungBearbeiten(int index);
-	std::shared_ptr<NichtFunktionaleAnforderung> nichtFunktionaleAnforderungBearbeiten(int index);
+	void funktionaleAnforderungHinzu(std::shared_ptr<FunktionaleAnforderung> anf);
+	void nichtFuntkionaleAnforderungHinzu(std::shared_ptr<NichtFunktionaleAnforderung> anf);
+	void funktionaleAnforderungBearbeiten(int index, std::string bed, std::string sys, std::string obj, std::string proz, ArtFunktionalitaet funkt, Verbindlichkeit verb);
+	void nichtFunktionaleAnforderungBearbeiten(int index, std::string bed, std::string geg, std::string obj, std::string eig, std::string oper, std::string wert, Verbindlichkeit verb);
 	void funktionaleAnforderungloeschen(int index);
 	void nichtFunktionaleAnforderungloeschen(int index);
 };

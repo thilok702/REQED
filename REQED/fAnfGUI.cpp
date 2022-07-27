@@ -1,6 +1,9 @@
 #include "fAnfGUI.h"
+#include <msclr\marshal_cppstd.h>
+#include <string>
 using namespace REQED;
 using namespace System;
+using namespace std;
 
 Void fAnfGUI::changed(Object^ sender, EventArgs^ e) {
 	String^ anf;
@@ -40,7 +43,10 @@ String^ fAnfGUI::getFunktionalitaet(int index) {
 }
 
 Void fAnfGUI::okButton_Click(Object^ sender, EventArgs^ e) {
-	controller->
+	string anf[6] = {"a", "b", "c"};/*msclr::interop::marshal_as<string>(bedingungBox->Text), msclr::interop::marshal_as<string>(systemBox->Text),
+					msclr::interop::marshal_as<string>(objektBox->Text), msclr::interop::marshal_as<string>(prozesswortBox->Text),
+					msclr::interop::marshal_as<string>(funktionalitaetCombobox->Text), msclr::interop::marshal_as<string>(verbindlichkeitCombobox->Text)};*/
+	controller->processInput(3, anf);
 }
 
 Void fAnfGUI::abbrechenButton_Click(Object^ sender, EventArgs^ e) {
