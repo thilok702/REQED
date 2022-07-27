@@ -17,41 +17,19 @@ string FunktionaleAnforderung::toString() {
 	string anf;
 	if(bedingung.length() == 0) {
 		anf += system + " ";
-		anf += getVerbindlichkeit(verbindlichkeit) + " ";
-		anf += getFunktionalitaet(funktionalitaet) + " ";
+		anf += verbindlichkeitToString(verbindlichkeit) + " ";
+		anf += funktionalitaetToString(funktionalitaet) + " ";
 		anf += objekt + " ";
 		anf += prozesswort + ".";
 	} else {
 		anf += bedingung + " ";
-		anf += getVerbindlichkeit(verbindlichkeit) + " ";
+		anf += verbindlichkeitToString(verbindlichkeit) + " ";
 		anf += system + " ";
-		anf += getFunktionalitaet(funktionalitaet) + " ";
+		anf += funktionalitaetToString(funktionalitaet) + " ";
 		anf += objekt + " ";
 		anf += prozesswort + ".";
 	}
 	return anf;
-}
-
-string FunktionaleAnforderung::getVerbindlichkeit(Verbindlichkeit verb) {
-	switch(verb) {
-	case muss:
-		return "muss";
-	case sollte:
-		return "soltte";
-	case wird:
-		return "wird";
-	}
-	return "";
-}
-
-string FunktionaleAnforderung::getFunktionalitaet(ArtFunktionalitaet funk) {
-	switch(funk) {
-	case Benutzerinteraktion:
-		return "dem/der Benutzer/-in die Möglichkeit bieten";
-	case Schnittstellenanforderung:
-		return "fähig sein";
-	}
-	return "";
 }
 
 string FunktionaleAnforderung::getBedingung() {

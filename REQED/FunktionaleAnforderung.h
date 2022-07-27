@@ -26,8 +26,5 @@ public:
 	void setFunktionalitaet(ArtFunktionalitaet funkt);
 	Verbindlichkeit getVerbindlichkeit();
 	void setVerbindlichkeit(Verbindlichkeit verb);
-private:
-	std::string getFunktionalitaet(ArtFunktionalitaet funk);
-	std::string getVerbindlichkeit(Verbindlichkeit verb);
 };
 
