@@ -20,19 +20,19 @@ void Projekt::exportJSON(string pfad) {
 }
 
 void Projekt::funktionaleAnforderungHinzu(FunktionaleAnforderung anf) {
-	F_anf.push_back(anf);
+	F_anf.push_back(shared_ptr<FunktionaleAnforderung>(new FunktionaleAnforderung(anf)));
 }
 
 void Projekt::nichtFuntkionaleAnforderungHinzu(NichtFunktionaleAnforderung anf) {
-	NF_anf.push_back(anf);
+	NF_anf.push_back(shared_ptr<NichtFunktionaleAnforderung> (new NichtFunktionaleAnforderung(anf)));
 }
 
 std::shared_ptr<FunktionaleAnforderung> Projekt::funktionaleAnforderungBearbeiten(int index) {
-
+	return F_anf[index];
 }
 
 std::shared_ptr<NichtFunktionaleAnforderung> Projekt::nichtFunktionaleAnforderungBearbeiten(int index) {
-
+	return NF_anf[index];
 }
 
 void Projekt::funktionaleAnforderungloeschen(int index) {
