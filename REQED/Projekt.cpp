@@ -20,11 +20,11 @@ void Projekt::exportJSON(string pfad) {
 }
 
 void Projekt::funktionaleAnforderungHinzu(FunktionaleAnforderung anf) {
-
+	F_anf.push_back(anf);
 }
 
 void Projekt::nichtFuntkionaleAnforderungHinzu(NichtFunktionaleAnforderung anf) {
-
+	NF_anf.push_back(anf);
 }
 
 std::shared_ptr<FunktionaleAnforderung> Projekt::funktionaleAnforderungBearbeiten(int index) {
