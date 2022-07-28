@@ -1,4 +1,6 @@
 #include "Projekt.h"
+#include "Verbindlichkeit.h"
+#include "ArtFunktionalitaet.h"
 #include <string>
 #include <memory>
 using namespace std;
@@ -31,7 +33,7 @@ void Projekt::funktionaleAnforderungBearbeiten(int index, string bed, string sys
 	
 }
 
-void Projekt::nichtFunktionaleAnforderungBearbeiten(int index, string bed, string geg, string obj, string eig, string oper, string wert, Verbindlichkeit verb) {
+void Projekt::nichtFunktionaleAnforderungBearbeiten(int index, string bed, string geg, string eig, string oper, string wert, Verbindlichkeit verb) {
 	
 }
 

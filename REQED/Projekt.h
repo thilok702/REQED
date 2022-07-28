@@ -1,6 +1,8 @@
 #pragma once
 #include "FunktionaleAnforderung.h"
 #include "NichtFunktionaleAnforderung.h"
+#include "Verbindlichkeit.h"
+#include "ArtFunktionalitaet.h"
 #include <string>
 #include <vector>
 #include <memory>
@@ -18,7 +20,7 @@ public:
 	void funktionaleAnforderungHinzu(std::shared_ptr<FunktionaleAnforderung> anf);
 	void nichtFuntkionaleAnforderungHinzu(std::shared_ptr<NichtFunktionaleAnforderung> anf);
 	void funktionaleAnforderungBearbeiten(int index, std::string bed, std::string sys, std::string obj, std::string proz, ArtFunktionalitaet funkt, Verbindlichkeit verb);
-	void nichtFunktionaleAnforderungBearbeiten(int index, std::string bed, std::string geg, std::string obj, std::string eig, std::string oper, std::string wert, Verbindlichkeit verb);
+	void nichtFunktionaleAnforderungBearbeiten(int index, std::string bed, std::string geg, std::string eig, std::string oper, std::string wert, Verbindlichkeit verb);
 	void funktionaleAnforderungloeschen(int index);
 	void nichtFunktionaleAnforderungloeschen(int index);
 };

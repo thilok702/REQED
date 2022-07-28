@@ -33,6 +33,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="NichtFunktionaleAnforderung.cpp" />
     <ClCompile Include="Projekt.cpp" />
+    <ClCompile Include="startGUI.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Controller.h" />
@@ -46,6 +47,9 @@
     <ClInclude Include="ArtFunktionalitaet.h" />
     <ClInclude Include="NichtFunktionaleAnforderung.h" />
     <ClInclude Include="Projekt.h" />
+    <ClInclude Include="startGUI.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="Verbindlichkeit.h" />
   </ItemGroup>
   <ItemGroup>
@@ -54,6 +58,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI.resx">
       <DependentUpon>GUI.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="startGUI.resx">
+      <DependentUpon>startGUI.h</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup Label="Globals">

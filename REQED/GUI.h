@@ -247,7 +247,7 @@ namespace REQED {
 		}
 	#pragma endregion
 
-	private: System::Void GUI_Load(System::Object^ sender, System::EventArgs^ e) {}
+	private: System::Void GUI_Load(System::Object^ sender, System::EventArgs^ e);
 	//private: System::Void button_Click(System::Object^ sender, System::EventArgs ^ e);
 	private: System::Void neuToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e);
 	private: System::Void öffnenToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e);

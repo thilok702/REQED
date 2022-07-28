@@ -5,7 +5,7 @@ enum Verbindlichkeit {
 	sollte, muss, wird
 };
 
-std::string verbindlichkeitToString(Verbindlichkeit verb) {
+static std::string verbindlichkeitToString(Verbindlichkeit verb) {
 	switch(verb) {
 	case muss:
 		return "muss";
@@ -15,4 +15,14 @@ std::string verbindlichkeitToString(Verbindlichkeit verb) {
 		return "wird";
 	}
 	return "";
+}
+
+static Verbindlichkeit getVerbindlichkeit(std::string verb) {
+	if(verb == "muss") {
+		return Verbindlichkeit::muss;
+	} else if(verb == "sollte") {
+		return Verbindlichkeit::sollte;
+	} else {
+		return Verbindlichkeit::wird;
+	}
 }

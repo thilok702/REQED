@@ -1,10 +1,26 @@
 #include "GUI.h"
 #include "fAnfGUI.h"
+#include <msclr\marshal_cppstd.h>
+#include "startGUI.h"
 using namespace std;
 using namespace System;
 using namespace System::Windows::Forms;
 using namespace System::IO;
 using namespace REQED;
+
+Void GUI::GUI_Load(System::Object^ sender, System::EventArgs^ e) {
+    StreamReader^ sr;
+    if((sr = gcnew StreamReader("letztesProjekt.txt")) != nullptr) {
+        String^ tmp = sr->ReadLine();
+        if(tmp != nullptr) {
+            controller->openProject(msclr::interop::marshal_as<string>(tmp));
+        } else {
+            startGUI start(controller);
+            start.ShowDialog();
+        }
+        sr->Close();
+    } 
+}
 
 void GUI::fAnfButton_Click(Object^ sender, EventArgs^ e) {
     fAnfGUI fAnf(controller);
@@ -33,31 +49,6 @@ Void GUI::speichernToolStripMenuItem_Click(Object^ sender, EventArgs^ e) {}
 Void GUI::textDateiToolStripMenuItem_Click(Object^ sender, EventArgs^ e) {}
 
 Void GUI::jSONDateiToolStripMenuItem_Click(Object^ sender, EventArgs^ e) {}
-
-//SaveFileDialog^ sfd = gcnew SaveFileDialog;
-    //sfd->FileName = "test";
-    //sfd->DefaultExt = ".RQ";
-    //sfd->Filter = "REQED (*.RQ)|*.RQ";
-    //if(sfd->ShowDialog() == Windows::Forms::DialogResult::OK) {
-    //    StreamWriter^ sw = gcnew StreamWriter(sfd->FileName);
-    //    sw->WriteLine("Hallo");
-    //    sw->Close();
-    //}
-
-    //OpenFileDialog^ ofd = gcnew OpenFileDialog;
-    ////ofd->InitialDirectory = "c:\\";
-    //ofd->Filter = "REQED (*.RQ)|*.RQ";
-    //ofd->FilterIndex = 2;
-    //ofd->RestoreDirectory = true;
-
-    //if(ofd->ShowDialog() == Windows::Forms::DialogResult::OK) {
-    //    label1->Text = gcnew String(ofd->FileName);
-    //    StreamReader^ sr;
-    //    if((sr = gcnew StreamReader(ofd->FileName)) != nullptr) {
-    //        label1->Text = sr->ReadLine();
-    //        sr->Close();
-    //    }
-    //}
 
     //MessageBox::Show("hallo");
     /*FolderBrowserDialog^ obd = gcnew FolderBrowserDialog;

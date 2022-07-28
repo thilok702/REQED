@@ -3,12 +3,30 @@
 #include <string>
 using namespace std;
 
-NichtFunktionaleAnforderung::NichtFunktionaleAnforderung(string bed, string geg, string obj, string eig, string oper, string wert, Verbindlichkeit verb) {
-
+NichtFunktionaleAnforderung::NichtFunktionaleAnforderung(string bed, string geg, string eig, string oper, string wert, Verbindlichkeit verb) {
+	bedingung = bed;
+	betrachtungsgegenstand = geg;
+	eigenschaft = eig;
+	vergleichsoperator = oper;
+	this->wert = wert;
+	verbindlichkeit = verb;
 }
 
-void NichtFunktionaleAnforderung::toString() {
-
+string NichtFunktionaleAnforderung::toString() {
+	string anf;
+	if(bedingung.length() == 0) {
+		anf += eigenschaft + " ";
+		anf += verbindlichkeitToString(verbindlichkeit) + " ";
+		anf += vergleichsoperator + " ";
+		anf += wert + " sein.";
+	} else {
+		anf += bedingung + " ";
+		anf += verbindlichkeitToString(verbindlichkeit) + " ";
+		anf += eigenschaft + " ";
+		anf += vergleichsoperator + " ";
+		anf += wert + " sein.";
+	}
+	return anf;
 }
 
 string NichtFunktionaleAnforderung::getBedingung() {
@@ -24,14 +42,6 @@ string NichtFunktionaleAnforderung::getGegenstand() {
 
 void NichtFunktionaleAnforderung::setGegenstand(string geg) {
 	betrachtungsgegenstand = geg;
-}
-
-string NichtFunktionaleAnforderung::getObjekt() {
-	return objekt;
-}
-
-void NichtFunktionaleAnforderung::setObjekt(string obj) {
-	objekt = obj;
 }
 
 string NichtFunktionaleAnforderung::getEigenschaft() {
