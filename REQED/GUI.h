@@ -1,26 +1,35 @@
 #pragma once
 #include "Controller.h"
+#include "Projekt.h"
+#include "View.h"
 
 namespace REQED {
 	/// <summary>
 	/// Summary for GUI
 	/// </summary>
-	public ref class GUI: public System::Windows::Forms::Form {
+	public ref class GUI: public System::Windows::Forms::Form, public View {
 	private: Controller* controller;
+	private: Projekt* projekt;
 	public:
-		GUI(void) {
+		GUI() {
+			projekt = NULL;
 			controller = new Controller();
 			InitializeComponent();
 		}
+		void setProjekt(Projekt* proj);
+		virtual void modelChanged();
+	private:
+		void show();
 	protected:
 		/// <summary>
 		/// Clean up any resources being used.
 		/// </summary>
 		~GUI() {
-			/*if(components) {
+			if(components) {
 				delete components;
-			}*/
+			}
 			delete controller;
+			delete projekt;
 		}
 	private: System::Windows::Forms::Label^ fAnf;
 	private: System::Windows::Forms::Button^ fAnfButton;
@@ -238,6 +247,7 @@ namespace REQED {
 			this->MaximizeBox = false;
 			this->Name = L"GUI";
 			this->Text = L"REQED";
+			this->FormClosing += gcnew System::Windows::Forms::FormClosingEventHandler(this, &GUI::GUI_FormClosing);
 			this->Load += gcnew System::EventHandler(this, &GUI::GUI_Load);
 			this->toolStrip1->ResumeLayout(false);
 			this->toolStrip1->PerformLayout();
@@ -256,5 +266,6 @@ namespace REQED {
 	private: System::Void jSONDateiToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e);
 	private: System::Void fAnfButton_Click(System::Object^ sender, System::EventArgs^ e);
 	private: System::Void nfAnfButton_Click(System::Object^ sender, System::EventArgs^ e);
+	private: System::Void GUI_FormClosing(System::Object^ sender, System::Windows::Forms::FormClosingEventArgs^ e);
 	};
 }

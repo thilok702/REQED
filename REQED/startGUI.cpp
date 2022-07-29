@@ -9,9 +9,9 @@ using namespace std;
 Void startGUI::oeffnenButton_Click(Object^ sender, EventArgs^ e) {
     OpenFileDialog^ ofd = gcnew OpenFileDialog;
     ofd->Filter = "REQED (*.RQ)|*.RQ";
-    ofd->FilterIndex = 2;
     if(ofd->ShowDialog() == Windows::Forms::DialogResult::OK) {
-        controller->openProject(msclr::interop::marshal_as<string>(ofd->FileName));
+        main->setProjekt(controller->openProject(msclr::interop::marshal_as<string>(ofd->FileName), main).get());
+        gueltig = true;
         this->Close();
     }
 }
@@ -22,16 +22,21 @@ Void startGUI::neuButton_Click(Object^ sender, EventArgs^ e) {
     sfd->DefaultExt = "RQ";
     sfd->Filter = "REQED (*.RQ)|*.RQ";
     sfd->OverwritePrompt = true;
+    sfd->AddExtension = true;
     if(sfd->ShowDialog() == Windows::Forms::DialogResult::OK) {
         StreamWriter^ sw = gcnew StreamWriter(sfd->FileName);
         sw->WriteLine("");
         sw->Close();
+        main->setProjekt(controller->openProject(msclr::interop::marshal_as<string>(sfd->FileName), main).get());
+        gueltig = true;
         this->Close();
     }
 }
 
 Void startGUI::startGUI_FormClosed(Object^ sender, FormClosedEventArgs^ e) {
-    Application::Exit();
+    if(!gueltig) {
+        Application::Exit();
+    }
 }
 
 

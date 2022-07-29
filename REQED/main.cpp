@@ -1,4 +1,5 @@
 #include "GUI.h"
+#include "Controller.h"
 using namespace REQED;
 using namespace System::Windows::Forms;
 using namespace System;

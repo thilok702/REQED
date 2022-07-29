@@ -1,7 +1,7 @@
 #include "Controller.h"
 #include "FunktionaleAnforderung.h"
-//#include "NichtFunktionaleAnforderung.h"
-//#include "ArtFunktionalitaet.h"
+#include "NichtFunktionaleAnforderung.h"
+#include "ArtFunktionalitaet.h"
 #include <string>
 #include <memory>
 using namespace std;
@@ -10,8 +10,9 @@ Controller::Controller() {
 	aktProjekt = nullptr;
 }
 
-void Controller::openProject(string pfad) {
-	aktProjekt = make_unique<Projekt>("hui");
+shared_ptr<Projekt>& Controller::openProject(string pfad, View^ gui) {
+	aktProjekt = make_shared<Projekt>(pfad, gui);
+	return aktProjekt;
 }
 
 void Controller::processInput(int methode, string args[]) {
@@ -44,4 +45,8 @@ void Controller::processInput(int methode, string args[]) {
 		aktProjekt->nichtFunktionaleAnforderungloeschen(stoi(args[0]));
 		break;
 	}
+}
+
+bool Controller::projektSaved() {
+	return aktProjekt->isSaved();
 }

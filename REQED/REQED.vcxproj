@@ -51,6 +51,7 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="Verbindlichkeit.h" />
+    <ClInclude Include="View.h" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="fAnfGUI.resx">

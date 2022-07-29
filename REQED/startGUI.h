@@ -1,5 +1,6 @@
 #pragma once
 #include "Controller.h"
+#include "GUI.h"
 
 namespace REQED {
 
@@ -16,10 +17,14 @@ namespace REQED {
 	public ref class startGUI : public System::Windows::Forms::Form
 	{
 	private: Controller* controller;
+	private: GUI^ main;
+	private: bool gueltig;
 	public:
-		startGUI(Controller* contr)
+		startGUI(GUI^ gui, Controller* contr)
 		{
+			main = gui;
 			controller = contr;
+			gueltig = false;
 			InitializeComponent();
 			//
 			//TODO: Add the constructor code here
@@ -122,5 +127,5 @@ namespace REQED {
 	private: System::Void oeffnenButton_Click(System::Object^ sender, System::EventArgs^ e);
 	private: System::Void neuButton_Click(System::Object^ sender, System::EventArgs^ e);
 	private: System::Void startGUI_FormClosed(System::Object^ sender, System::Windows::Forms::FormClosedEventArgs^ e);
-};
+	};
 }
