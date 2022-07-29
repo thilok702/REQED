@@ -12,7 +12,7 @@ Projekt::Projekt(string pfad_in, View^ view) {
 }
 
 void Projekt::projektSpeichern() {
-
+	saved = true;
 }
 
 void Projekt::exportTXT(string pfad) {
