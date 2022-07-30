@@ -26,11 +26,13 @@ void Projekt::exportJSON(string pfad) {
 void Projekt::funktionaleAnforderungHinzu(shared_ptr<FunktionaleAnforderung> anf) {
 	F_anf.push_back(anf);
 	saved = false;
+	view->modelChanged();
 }
 
 void Projekt::nichtFuntkionaleAnforderungHinzu(shared_ptr<NichtFunktionaleAnforderung> anf) {
 	NF_anf.push_back(anf);
 	saved = false;
+	view->modelChanged();
 }
 
 void Projekt::funktionaleAnforderungBearbeiten(int index, string bed, string sys, string obj, string proz, ArtFunktionalitaet funkt, Verbindlichkeit verb) {
@@ -42,6 +44,7 @@ void Projekt::funktionaleAnforderungBearbeiten(int index, string bed, string sys
 	anf->setFunktionalitaet(funkt);
 	anf->setVerbindlichkeit(verb);
 	saved = false;
+	view->modelChanged();
 }
 
 void Projekt::nichtFunktionaleAnforderungBearbeiten(int index, string bed, string geg, string eig, string oper, string wert, Verbindlichkeit verb) {
@@ -53,16 +56,19 @@ void Projekt::nichtFunktionaleAnforderungBearbeiten(int index, string bed, strin
 	anf->setWert(wert);
 	anf->setVerbindlichkeit(verb);
 	saved = false;
+	view->modelChanged();
 }
 
 void Projekt::funktionaleAnforderungloeschen(int index) {
 	F_anf.erase(F_anf.begin() + index);
 	saved = false;
+	view->modelChanged();
 }
 
 void Projekt::nichtFunktionaleAnforderungloeschen(int index) {
 	NF_anf.erase(NF_anf.begin() + index);
 	saved = false;
+	view->modelChanged();
 }
 
 bool Projekt::isSaved() {

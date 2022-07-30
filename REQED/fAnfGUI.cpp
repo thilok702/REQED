@@ -63,10 +63,17 @@ Void fAnfGUI::okButton_Click(Object^ sender, EventArgs^ e) {
 	} else if(prozesswortBox->TextLength == 0) {
 		fehler->Text = "'Prozesswort' darf nicht leer sein!";
 	} else {
-		string anf[6] = {msclr::interop::marshal_as<string>(bedingungBox->Text), msclr::interop::marshal_as<string>(systemBox->Text),
+		if(bearbeiten == true) {
+			string anf[7] = {to_string(index), msclr::interop::marshal_as<string>(bedingungBox->Text), msclr::interop::marshal_as<string>(systemBox->Text),
 						msclr::interop::marshal_as<string>(objektBox->Text), msclr::interop::marshal_as<string>(prozesswortBox->Text),
 						msclr::interop::marshal_as<string>(funktionalitaetCombobox->Text), msclr::interop::marshal_as<string>(verbindlichkeitCombobox->Text)};
-		controller->processInput(3, anf);
+			controller->processInput(5, anf);
+		} else {
+			string anf[6] = {msclr::interop::marshal_as<string>(bedingungBox->Text), msclr::interop::marshal_as<string>(systemBox->Text),
+						msclr::interop::marshal_as<string>(objektBox->Text), msclr::interop::marshal_as<string>(prozesswortBox->Text),
+						msclr::interop::marshal_as<string>(funktionalitaetCombobox->Text), msclr::interop::marshal_as<string>(verbindlichkeitCombobox->Text)};
+			controller->processInput(3, anf);
+		}
 		this->Close();
 	}
 }

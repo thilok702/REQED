@@ -38,10 +38,3 @@ Void startGUI::startGUI_FormClosed(Object^ sender, FormClosedEventArgs^ e) {
         Application::Exit();
     }
 }
-
-
-//StreamReader^ sr;
-//if((sr = gcnew StreamReader(ofd->FileName)) != nullptr) {
-//    label1->Text = sr->ReadLine();
-//    sr->Close();
-//}

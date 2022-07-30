@@ -50,10 +50,17 @@ Void nfAnfGUI::okButton_Click(Object^ sender, EventArgs^ e) {
 	} else if(wertBox->TextLength == 0) {
 		fehler->Text = "'Wert' darf nicht leer sein!";
 	} else {
-		string anf[6] = {msclr::interop::marshal_as<string>(bedingungBox->Text), msclr::interop::marshal_as<string>(gegenstandBox->Text),
+		if(bearbeiten == true) {
+			string anf[7] = {to_string(index), msclr::interop::marshal_as<string>(bedingungBox->Text), msclr::interop::marshal_as<string>(gegenstandBox->Text),
 						msclr::interop::marshal_as<string>(eigenschaftBox->Text), msclr::interop::marshal_as<string>(operatorBox->Text),
 						msclr::interop::marshal_as<string>(wertBox->Text), msclr::interop::marshal_as<string>(verbindlichkeitCombobox->Text)};
-		controller->processInput(4, anf);
+			controller->processInput(6, anf);
+		} else {
+			string anf[6] = {msclr::interop::marshal_as<string>(bedingungBox->Text), msclr::interop::marshal_as<string>(gegenstandBox->Text),
+						msclr::interop::marshal_as<string>(eigenschaftBox->Text), msclr::interop::marshal_as<string>(operatorBox->Text),
+						msclr::interop::marshal_as<string>(wertBox->Text), msclr::interop::marshal_as<string>(verbindlichkeitCombobox->Text)};
+			controller->processInput(4, anf);
+		}
 		this->Close();
 	}
 }
