@@ -224,7 +224,7 @@ namespace REQED {
 			this->anforderung->AutoSize = true;
 			this->anforderung->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->anforderung->Location = System::Drawing::Point(39, 201);
+			this->anforderung->Location = System::Drawing::Point(17, 207);
 			this->anforderung->Name = L"anforderung";
 			this->anforderung->Size = System::Drawing::Size(0, 18);
 			this->anforderung->TabIndex = 12;
