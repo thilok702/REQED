@@ -1,9 +1,22 @@
 #include "fAnfGUI.h"
 #include <msclr\marshal_cppstd.h>
 #include <string>
+#include <memory>
 using namespace REQED;
 using namespace System;
 using namespace std;
+
+Void fAnfGUI::fAnfGUI_Load(Object^ sender, EventArgs^ e) {
+	if(bearbeiten == true) {
+		const shared_ptr<FunktionaleAnforderung>& anf = projekt->getFanf(index);
+		bedingungBox->Text = gcnew String(anf->getBedingung().c_str());
+		verbindlichkeitCombobox->Text = gcnew String(verbindlichkeitToString(anf->getVerbindlichkeit()).c_str());
+		systemBox->Text = gcnew String(anf->getSystem().c_str());
+		funktionalitaetCombobox->Text = gcnew String(funktionalitaetToString(anf->getFunktionalitaet()).c_str());
+		objektBox->Text = gcnew String(anf->getObjekt().c_str());
+		prozesswortBox->Text = gcnew String(anf->getProzesswort().c_str());
+	}
+}
 
 Void fAnfGUI::changed(Object^ sender, EventArgs^ e) {
 	String^ anf;
@@ -53,7 +66,6 @@ Void fAnfGUI::okButton_Click(Object^ sender, EventArgs^ e) {
 		string anf[6] = {msclr::interop::marshal_as<string>(bedingungBox->Text), msclr::interop::marshal_as<string>(systemBox->Text),
 						msclr::interop::marshal_as<string>(objektBox->Text), msclr::interop::marshal_as<string>(prozesswortBox->Text),
 						msclr::interop::marshal_as<string>(funktionalitaetCombobox->Text), msclr::interop::marshal_as<string>(verbindlichkeitCombobox->Text)};
-		bedingung->Text = gcnew String(anf[0].c_str());
 		controller->processInput(3, anf);
 		this->Close();
 	}

@@ -29,5 +29,7 @@ public:
 	void nichtFunktionaleAnforderungloeschen(int index);
 	bool isSaved();
 	std::string getPfad();
+	const std::shared_ptr<FunktionaleAnforderung>& getFanf(int index);
+	const std::shared_ptr<NichtFunktionaleAnforderung>& getNFanf(int index);
 };
 

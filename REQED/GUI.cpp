@@ -2,6 +2,7 @@
 #include "fAnfGUI.h"
 #include <msclr\marshal_cppstd.h>
 #include "startGUI.h"
+#include "nfAnfGUI.h"
 using namespace std;
 using namespace System;
 using namespace System::Windows::Forms;
@@ -47,7 +48,7 @@ Void GUI::GUI_FormClosing(System::Object^ sender, System::Windows::Forms::FormCl
 }
 
 void GUI::fAnfButton_Click(Object^ sender, EventArgs^ e) {
-    fAnfGUI fAnf(controller);
+    fAnfGUI fAnf(controller, projekt, false, 0);
     fAnf.ShowDialog();
 }
 
@@ -61,7 +62,8 @@ void GUI::fAnfButton_Click(Object^ sender, EventArgs^ e) {
 //}
 
 Void GUI::nfAnfButton_Click(Object^ sender, EventArgs^ e) {
-    
+    nfAnfGUI nfAnf(controller, projekt, false, 0);
+    nfAnf.ShowDialog();
 }
 
 Void GUI::neuToolStripMenuItem_Click(Object^ sender, EventArgs^ e) {

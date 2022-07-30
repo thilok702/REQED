@@ -31,6 +31,7 @@
     <ClCompile Include="FunktionaleAnforderung.cpp" />
     <ClCompile Include="GUI.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="nfAnfGUI.cpp" />
     <ClCompile Include="NichtFunktionaleAnforderung.cpp" />
     <ClCompile Include="Projekt.cpp" />
     <ClCompile Include="startGUI.cpp" />
@@ -45,6 +46,9 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="ArtFunktionalitaet.h" />
+    <ClInclude Include="nfAnfGUI.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="NichtFunktionaleAnforderung.h" />
     <ClInclude Include="Projekt.h" />
     <ClInclude Include="startGUI.h">
@@ -59,6 +63,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI.resx">
       <DependentUpon>GUI.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="nfAnfGUI.resx">
+      <DependentUpon>nfAnfGUI.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="startGUI.resx">
       <DependentUpon>startGUI.h</DependentUpon>

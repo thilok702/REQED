@@ -72,3 +72,11 @@ bool Projekt::isSaved() {
 string Projekt::getPfad() {
 	return pfad;
 }
+
+const std::shared_ptr<FunktionaleAnforderung>& Projekt::getFanf(int index) {
+	return F_anf[index];
+}
+
+const std::shared_ptr<NichtFunktionaleAnforderung>& Projekt::getNFanf(int index) {
+	return NF_anf[index];
+}

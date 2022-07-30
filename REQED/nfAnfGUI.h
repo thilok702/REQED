@@ -12,15 +12,17 @@ namespace REQED {
 	using namespace System::Drawing;
 
 	/// <summary>
-	/// Summary for fAnfGUI
+	/// Summary for nnfAnfGUI
 	/// </summary>
-	public ref class fAnfGUI : public System::Windows::Forms::Form {
+	public ref class nfAnfGUI : public System::Windows::Forms::Form 
+	{
 	private: Controller* controller;
+	private: System::Windows::Forms::TextBox^ gegenstandBox;
 	private: Projekt* projekt;
 	private: bool bearbeiten;
 	private: int index;
 	public:
-		fAnfGUI(Controller* contr, Projekt* pr, bool bearb, int ind)
+		nfAnfGUI(Controller* contr, Projekt* pr, bool bearb, int ind)
 		{
 			projekt = pr;
 			controller = contr;
@@ -33,28 +35,34 @@ namespace REQED {
 		}
 
 	protected:
-		/// <summary>
-		/// Clean up any resources being used.
-		/// </summary>
-		~fAnfGUI()
+	/// <summary>
+	/// Clean up any resources being used.
+	/// </summary>
+		~nfAnfGUI()
 		{
-			if (components)
+			if(components)
 			{
 				delete components;
 			}
 		}
 	private: System::Windows::Forms::Label^ bedingung;
 	private: System::Windows::Forms::Label^ verbindlichkeit;
-	private: System::Windows::Forms::Label^ system;
+	private: System::Windows::Forms::Label^ eigenschaft;
+
 	private: System::Windows::Forms::ComboBox^ verbindlichkeitCombobox;
 	private: System::Windows::Forms::Label^ funktionalitaet;
-	private: System::Windows::Forms::Label^ objekt;
-	private: System::Windows::Forms::Label^ prozesswort;
+	private: System::Windows::Forms::Label^ oper;
+	private: System::Windows::Forms::Label^ wert;
+
+
 	private: System::Windows::Forms::TextBox^ bedingungBox;
-	private: System::Windows::Forms::TextBox^ systemBox;
-	private: System::Windows::Forms::TextBox^ objektBox;
-	private: System::Windows::Forms::TextBox^ prozesswortBox;
-	private: System::Windows::Forms::ComboBox^ funktionalitaetCombobox;
+	private: System::Windows::Forms::TextBox^ eigenschaftBox;
+	private: System::Windows::Forms::TextBox^ operatorBox;
+	private: System::Windows::Forms::TextBox^ wertBox;
+
+
+
+
 	private: System::Windows::Forms::Label^ anforderung;
 	private: System::Windows::Forms::Button^ okButton;
 	private: System::Windows::Forms::Button^ abbrechenButton;
@@ -64,7 +72,7 @@ namespace REQED {
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>
-		System::ComponentModel::Container ^components;
+		System::ComponentModel::Container^ components;
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -75,20 +83,20 @@ namespace REQED {
 		{
 			this->bedingung = (gcnew System::Windows::Forms::Label());
 			this->verbindlichkeit = (gcnew System::Windows::Forms::Label());
-			this->system = (gcnew System::Windows::Forms::Label());
+			this->eigenschaft = (gcnew System::Windows::Forms::Label());
 			this->verbindlichkeitCombobox = (gcnew System::Windows::Forms::ComboBox());
 			this->funktionalitaet = (gcnew System::Windows::Forms::Label());
-			this->objekt = (gcnew System::Windows::Forms::Label());
-			this->prozesswort = (gcnew System::Windows::Forms::Label());
+			this->oper = (gcnew System::Windows::Forms::Label());
+			this->wert = (gcnew System::Windows::Forms::Label());
 			this->bedingungBox = (gcnew System::Windows::Forms::TextBox());
-			this->systemBox = (gcnew System::Windows::Forms::TextBox());
-			this->objektBox = (gcnew System::Windows::Forms::TextBox());
-			this->prozesswortBox = (gcnew System::Windows::Forms::TextBox());
-			this->funktionalitaetCombobox = (gcnew System::Windows::Forms::ComboBox());
+			this->eigenschaftBox = (gcnew System::Windows::Forms::TextBox());
+			this->operatorBox = (gcnew System::Windows::Forms::TextBox());
+			this->wertBox = (gcnew System::Windows::Forms::TextBox());
 			this->anforderung = (gcnew System::Windows::Forms::Label());
 			this->okButton = (gcnew System::Windows::Forms::Button());
 			this->abbrechenButton = (gcnew System::Windows::Forms::Button());
 			this->fehler = (gcnew System::Windows::Forms::Label());
+			this->gegenstandBox = (gcnew System::Windows::Forms::TextBox());
 			this->SuspendLayout();
 			// 
 			// bedingung
@@ -107,22 +115,22 @@ namespace REQED {
 			this->verbindlichkeit->AutoSize = true;
 			this->verbindlichkeit->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->verbindlichkeit->Location = System::Drawing::Point(150, 106);
+			this->verbindlichkeit->Location = System::Drawing::Point(153, 106);
 			this->verbindlichkeit->Name = L"verbindlichkeit";
 			this->verbindlichkeit->Size = System::Drawing::Size(110, 16);
 			this->verbindlichkeit->TabIndex = 2;
 			this->verbindlichkeit->Text = L"Verbindlichkeit";
 			// 
-			// system
+			// eigenschaft
 			// 
-			this->system->AutoSize = true;
-			this->system->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->eigenschaft->AutoSize = true;
+			this->eigenschaft->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->system->Location = System::Drawing::Point(304, 106);
-			this->system->Name = L"system";
-			this->system->Size = System::Drawing::Size(58, 16);
-			this->system->TabIndex = 3;
-			this->system->Text = L"System";
+			this->eigenschaft->Location = System::Drawing::Point(313, 106);
+			this->eigenschaft->Name = L"eigenschaft";
+			this->eigenschaft->Size = System::Drawing::Size(88, 16);
+			this->eigenschaft->TabIndex = 3;
+			this->eigenschaft->Text = L"Eigenschaft";
 			// 
 			// verbindlichkeitCombobox
 			// 
@@ -130,46 +138,46 @@ namespace REQED {
 				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
 			this->verbindlichkeitCombobox->FormattingEnabled = true;
 			this->verbindlichkeitCombobox->Items->AddRange(gcnew cli::array< System::Object^  >(3) { L"muss", L"sollte", L"wird" });
-			this->verbindlichkeitCombobox->Location = System::Drawing::Point(153, 131);
+			this->verbindlichkeitCombobox->Location = System::Drawing::Point(156, 131);
 			this->verbindlichkeitCombobox->Name = L"verbindlichkeitCombobox";
 			this->verbindlichkeitCombobox->Size = System::Drawing::Size(121, 24);
 			this->verbindlichkeitCombobox->TabIndex = 1;
 			this->verbindlichkeitCombobox->Text = L"muss";
-			this->verbindlichkeitCombobox->SelectedIndexChanged += gcnew System::EventHandler(this, &fAnfGUI::changed);
-			this->verbindlichkeitCombobox->TextUpdate += gcnew System::EventHandler(this, &fAnfGUI::changed);
+			this->verbindlichkeitCombobox->SelectedIndexChanged += gcnew System::EventHandler(this, &nfAnfGUI::changed);
+			this->verbindlichkeitCombobox->TextUpdate += gcnew System::EventHandler(this, &nfAnfGUI::changed);
 			// 
 			// funktionalitaet
 			// 
 			this->funktionalitaet->AutoSize = true;
 			this->funktionalitaet->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->funktionalitaet->Location = System::Drawing::Point(434, 106);
+			this->funktionalitaet->Location = System::Drawing::Point(447, 90);
 			this->funktionalitaet->Name = L"funktionalitaet";
-			this->funktionalitaet->Size = System::Drawing::Size(99, 16);
+			this->funktionalitaet->Size = System::Drawing::Size(102, 32);
 			this->funktionalitaet->TabIndex = 5;
-			this->funktionalitaet->Text = L"Funktionalität";
+			this->funktionalitaet->Text = L"Betrachtungs-\r\ngegenstand";
 			// 
-			// objekt
+			// oper
 			// 
-			this->objekt->AutoSize = true;
-			this->objekt->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->oper->AutoSize = true;
+			this->oper->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->objekt->Location = System::Drawing::Point(625, 106);
-			this->objekt->Name = L"objekt";
-			this->objekt->Size = System::Drawing::Size(52, 16);
-			this->objekt->TabIndex = 6;
-			this->objekt->Text = L"Objekt";
+			this->oper->Location = System::Drawing::Point(596, 90);
+			this->oper->Name = L"oper";
+			this->oper->Size = System::Drawing::Size(86, 32);
+			this->oper->TabIndex = 6;
+			this->oper->Text = L"Vergleichs-\r\noperator";
 			// 
-			// prozesswort
+			// wert
 			// 
-			this->prozesswort->AutoSize = true;
-			this->prozesswort->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->wert->AutoSize = true;
+			this->wert->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->prozesswort->Location = System::Drawing::Point(762, 106);
-			this->prozesswort->Name = L"prozesswort";
-			this->prozesswort->Size = System::Drawing::Size(91, 16);
-			this->prozesswort->TabIndex = 7;
-			this->prozesswort->Text = L"Prozesswort";
+			this->wert->Location = System::Drawing::Point(746, 106);
+			this->wert->Name = L"wert";
+			this->wert->Size = System::Drawing::Size(39, 16);
+			this->wert->TabIndex = 7;
+			this->wert->Text = L"Wert";
 			// 
 			// bedingungBox
 			// 
@@ -179,53 +187,37 @@ namespace REQED {
 			this->bedingungBox->Name = L"bedingungBox";
 			this->bedingungBox->Size = System::Drawing::Size(100, 22);
 			this->bedingungBox->TabIndex = 0;
-			this->bedingungBox->TextChanged += gcnew System::EventHandler(this, &fAnfGUI::changed);
+			this->bedingungBox->TextChanged += gcnew System::EventHandler(this, &nfAnfGUI::changed);
 			// 
-			// systemBox
+			// eigenschaftBox
 			// 
-			this->systemBox->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->eigenschaftBox->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->systemBox->Location = System::Drawing::Point(307, 133);
-			this->systemBox->Name = L"systemBox";
-			this->systemBox->Size = System::Drawing::Size(100, 22);
-			this->systemBox->TabIndex = 2;
-			this->systemBox->TextChanged += gcnew System::EventHandler(this, &fAnfGUI::changed);
+			this->eigenschaftBox->Location = System::Drawing::Point(316, 131);
+			this->eigenschaftBox->Name = L"eigenschaftBox";
+			this->eigenschaftBox->Size = System::Drawing::Size(100, 22);
+			this->eigenschaftBox->TabIndex = 2;
+			this->eigenschaftBox->TextChanged += gcnew System::EventHandler(this, &nfAnfGUI::changed);
 			// 
-			// objektBox
+			// operatorBox
 			// 
-			this->objektBox->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->operatorBox->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->objektBox->Location = System::Drawing::Point(628, 131);
-			this->objektBox->Name = L"objektBox";
-			this->objektBox->Size = System::Drawing::Size(100, 22);
-			this->objektBox->TabIndex = 4;
-			this->objektBox->TextChanged += gcnew System::EventHandler(this, &fAnfGUI::changed);
+			this->operatorBox->Location = System::Drawing::Point(599, 131);
+			this->operatorBox->Name = L"operatorBox";
+			this->operatorBox->Size = System::Drawing::Size(100, 22);
+			this->operatorBox->TabIndex = 4;
+			this->operatorBox->TextChanged += gcnew System::EventHandler(this, &nfAnfGUI::changed);
 			// 
-			// prozesswortBox
+			// wertBox
 			// 
-			this->prozesswortBox->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->wertBox->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->prozesswortBox->Location = System::Drawing::Point(765, 131);
-			this->prozesswortBox->Name = L"prozesswortBox";
-			this->prozesswortBox->Size = System::Drawing::Size(100, 22);
-			this->prozesswortBox->TabIndex = 5;
-			this->prozesswortBox->TextChanged += gcnew System::EventHandler(this, &fAnfGUI::changed);
-			// 
-			// funktionalitaetCombobox
-			// 
-			this->funktionalitaetCombobox->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Regular,
-				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-			this->funktionalitaetCombobox->FormattingEnabled = true;
-			this->funktionalitaetCombobox->Items->AddRange(gcnew cli::array< System::Object^  >(3) {
-				L"Systemaktivität", L"Benutzerinteraktion",
-					L"Schnittstellenanforderung"
-			});
-			this->funktionalitaetCombobox->Location = System::Drawing::Point(437, 131);
-			this->funktionalitaetCombobox->Name = L"funktionalitaetCombobox";
-			this->funktionalitaetCombobox->Size = System::Drawing::Size(155, 24);
-			this->funktionalitaetCombobox->TabIndex = 3;
-			this->funktionalitaetCombobox->Text = L"Systemaktivität";
-			this->funktionalitaetCombobox->SelectedIndexChanged += gcnew System::EventHandler(this, &fAnfGUI::changed);
+			this->wertBox->Location = System::Drawing::Point(749, 131);
+			this->wertBox->Name = L"wertBox";
+			this->wertBox->Size = System::Drawing::Size(100, 22);
+			this->wertBox->TabIndex = 5;
+			this->wertBox->TextChanged += gcnew System::EventHandler(this, &nfAnfGUI::changed);
 			// 
 			// anforderung
 			// 
@@ -252,7 +244,7 @@ namespace REQED {
 			this->okButton->TabIndex = 6;
 			this->okButton->Text = L"OK";
 			this->okButton->UseVisualStyleBackColor = false;
-			this->okButton->Click += gcnew System::EventHandler(this, &fAnfGUI::okButton_Click);
+			this->okButton->Click += gcnew System::EventHandler(this, &nfAnfGUI::okButton_Click);
 			// 
 			// abbrechenButton
 			// 
@@ -269,7 +261,7 @@ namespace REQED {
 			this->abbrechenButton->TabIndex = 7;
 			this->abbrechenButton->Text = L"abbrechen";
 			this->abbrechenButton->UseVisualStyleBackColor = false;
-			this->abbrechenButton->Click += gcnew System::EventHandler(this, &fAnfGUI::abbrechenButton_Click);
+			this->abbrechenButton->Click += gcnew System::EventHandler(this, &nfAnfGUI::abbrechenButton_Click);
 			// 
 			// fehler
 			// 
@@ -282,41 +274,49 @@ namespace REQED {
 			this->fehler->Size = System::Drawing::Size(0, 16);
 			this->fehler->TabIndex = 13;
 			// 
-			// fAnfGUI
+			// gegenstandBox
+			// 
+			this->gegenstandBox->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->gegenstandBox->Location = System::Drawing::Point(450, 133);
+			this->gegenstandBox->Name = L"gegenstandBox";
+			this->gegenstandBox->Size = System::Drawing::Size(100, 22);
+			this->gegenstandBox->TabIndex = 3;
+			// 
+			// nfAnfGUI
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(897, 396);
+			this->Controls->Add(this->gegenstandBox);
 			this->Controls->Add(this->fehler);
 			this->Controls->Add(this->abbrechenButton);
 			this->Controls->Add(this->okButton);
 			this->Controls->Add(this->anforderung);
-			this->Controls->Add(this->funktionalitaetCombobox);
-			this->Controls->Add(this->prozesswortBox);
-			this->Controls->Add(this->objektBox);
-			this->Controls->Add(this->systemBox);
-			this->Controls->Add(this->prozesswort);
-			this->Controls->Add(this->objekt);
+			this->Controls->Add(this->wertBox);
+			this->Controls->Add(this->operatorBox);
+			this->Controls->Add(this->eigenschaftBox);
+			this->Controls->Add(this->wert);
+			this->Controls->Add(this->oper);
 			this->Controls->Add(this->funktionalitaet);
 			this->Controls->Add(this->verbindlichkeitCombobox);
-			this->Controls->Add(this->system);
+			this->Controls->Add(this->eigenschaft);
 			this->Controls->Add(this->verbindlichkeit);
 			this->Controls->Add(this->bedingung);
 			this->Controls->Add(this->bedingungBox);
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedSingle;
 			this->MaximizeBox = false;
-			this->Name = L"fAnfGUI";
-			this->Text = L"fAnfGUI";
-			this->Load += gcnew System::EventHandler(this, &fAnfGUI::fAnfGUI_Load);
+			this->Name = L"nfAnfGUI";
+			this->Text = L"nfAnfGUI";
+			this->Load += gcnew System::EventHandler(this, &nfAnfGUI::nfAnfGUI_Load);
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
 		}
 #pragma endregion
-	private: System::Void fAnfGUI_Load(System::Object^ sender, System::EventArgs^ e);
+	private: System::Void nfAnfGUI_Load(System::Object^ sender, System::EventArgs^ e);
 	private: System::Void changed(System::Object^ sender, System::EventArgs^ e);
-	private: System::String^ getFunktionalitaet(int index);
 	private: System::Void okButton_Click(System::Object^ sender, System::EventArgs^ e);
 	private: System::Void abbrechenButton_Click(System::Object^ sender, System::EventArgs^ e);
-};
+	};
 }
