@@ -100,6 +100,7 @@ Void GUI::GUI_FormClosing(System::Object^ sender, System::Windows::Forms::FormCl
 void GUI::fAnfButton_Click(Object^ sender, EventArgs^ e) {
     fAnfGUI fAnf(controller, projekt, false, 0);
     fAnf.ShowDialog();
+    //fAnf.~fAnfGUI();
 }
 
 Void GUI::nfAnfButton_Click(Object^ sender, EventArgs^ e) {
