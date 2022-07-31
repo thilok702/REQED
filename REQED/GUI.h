@@ -2,6 +2,7 @@
 #include "Controller.h"
 #include "Projekt.h"
 #include "View.h"
+#include <memory>
 
 namespace REQED {
 	/// <summary>
@@ -29,21 +30,16 @@ namespace REQED {
 				delete components;
 			}
 			delete controller;
-			delete projekt;
+			//delete projekt; wuerde Exception produzieren, da per shared_ptr erstellt 
 		}
 	private: System::Windows::Forms::Label^ fAnf;
 	private: System::Windows::Forms::Button^ fAnfButton;
-	protected:
-
-
 	private: System::Windows::Forms::ToolStrip^ toolStrip1;
 	private: System::Windows::Forms::ToolStripDropDownButton^ DateiDropDown;
-
 	private: System::Windows::Forms::ToolStripMenuItem^ öffnenToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^ speichernToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^ neuToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripDropDownButton^ exportDropDown;
-
 	private: System::Windows::Forms::ToolStripMenuItem^ textDateiToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^ jSONDateiToolStripMenuItem;
 	private: System::Windows::Forms::Label^ nfAnf;

@@ -17,7 +17,6 @@ namespace REQED {
 	public ref class nfAnfGUI : public System::Windows::Forms::Form 
 	{
 	private: Controller* controller;
-	private: System::Windows::Forms::TextBox^ gegenstandBox;
 	private: Projekt* projekt;
 	private: bool bearbeiten;
 	private: int index;
@@ -48,21 +47,15 @@ namespace REQED {
 	private: System::Windows::Forms::Label^ bedingung;
 	private: System::Windows::Forms::Label^ verbindlichkeit;
 	private: System::Windows::Forms::Label^ eigenschaft;
-
 	private: System::Windows::Forms::ComboBox^ verbindlichkeitCombobox;
 	private: System::Windows::Forms::Label^ funktionalitaet;
 	private: System::Windows::Forms::Label^ oper;
 	private: System::Windows::Forms::Label^ wert;
-
-
 	private: System::Windows::Forms::TextBox^ bedingungBox;
 	private: System::Windows::Forms::TextBox^ eigenschaftBox;
+	private: System::Windows::Forms::TextBox^ gegenstandBox;
 	private: System::Windows::Forms::TextBox^ operatorBox;
 	private: System::Windows::Forms::TextBox^ wertBox;
-
-
-
-
 	private: System::Windows::Forms::Label^ anforderung;
 	private: System::Windows::Forms::Button^ okButton;
 	private: System::Windows::Forms::Button^ abbrechenButton;

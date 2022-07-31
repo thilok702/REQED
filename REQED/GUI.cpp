@@ -19,7 +19,11 @@ void GUI::modelChanged() {
 }
 
 void GUI::show() {
-
+    if(projekt->isSaved()) {
+        this->Text = "REQED";
+    } else {
+        this->Text = "REQED *";
+    }
 }
 
 //Void GUI::button_Click(Object^ sender, EventArgs^ e) {
@@ -78,7 +82,7 @@ Void GUI::GUI_Load(System::Object^ sender, System::EventArgs^ e) {
 Void GUI::GUI_FormClosing(System::Object^ sender, System::Windows::Forms::FormClosingEventArgs^ e) {
     if(projekt != NULL) {
         if(!controller->projektSaved()) {
-            if(MessageBox::Show("Projekt nicht gespeichert, wollen sie fortfahren", "Programm schließen", MessageBoxButtons::OKCancel, MessageBoxIcon::Question) != Windows::Forms::DialogResult::OK) {
+            if(MessageBox::Show("Projekt nicht gespeichert, wollen sie fortfahren?", "Programm schließen", MessageBoxButtons::OKCancel, MessageBoxIcon::Question) != Windows::Forms::DialogResult::OK) {
                 e->Cancel = true;
                 return;
             }
