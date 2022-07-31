@@ -8,6 +8,5 @@ using namespace System;
 void main() {
     Application::EnableVisualStyles();
     Application::SetCompatibleTextRenderingDefault(false);
-    REQED::GUI form;
-    Application::Run(% form);
+    Application::Run(gcnew GUI);
 }

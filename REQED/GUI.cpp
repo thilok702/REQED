@@ -54,7 +54,7 @@ Void GUI::GUI_Load(System::Object^ sender, System::EventArgs^ e) {
     if((sr = gcnew StreamReader("letztesProjekt.txt")) != nullptr) {
         String^ tmp = sr->ReadLine();
         sr->Close();
-        if(tmp != nullptr || tmp->Length == 0) {
+        if(tmp != nullptr && tmp->Length > 0) {
             ifstream f(msclr::interop::marshal_as<string>(tmp).c_str());
             f.close();
             if(f.good()) {
@@ -64,18 +64,14 @@ Void GUI::GUI_Load(System::Object^ sender, System::EventArgs^ e) {
                 if((sw = gcnew StreamWriter("letztesProjekt.txt")) != nullptr) {
                     sw->WriteLine("");
                     sw->Close();
-                } else {
-                    sw->Close();
                 }
-                startGUI start(this, controller);
-                start.ShowDialog();
+                startGUI^ start = gcnew startGUI(this, controller);
+                start->ShowDialog();
             }
         } else {
-            startGUI start(this, controller);
-            start.ShowDialog();
+            startGUI^ start = gcnew startGUI(this, controller);
+            start->ShowDialog();
         }
-    } else {
-        sr->Close();
     }
 }
 
@@ -91,21 +87,18 @@ Void GUI::GUI_FormClosing(System::Object^ sender, System::Windows::Forms::FormCl
         if((sw = gcnew StreamWriter("letztesProjekt.txt")) != nullptr) {
             sw->WriteLine(gcnew String(projekt->getPfad().c_str()));
             sw->Close();
-        } else {
-            sw->Close();
         }
     }
 }
 
 void GUI::fAnfButton_Click(Object^ sender, EventArgs^ e) {
-    fAnfGUI fAnf(controller, projekt, false, 0);
-    fAnf.ShowDialog();
-    //fAnf.~fAnfGUI();
+    fAnfGUI^ fAnf = gcnew fAnfGUI(controller, projekt, false, 0);
+    fAnf->ShowDialog();
 }
 
 Void GUI::nfAnfButton_Click(Object^ sender, EventArgs^ e) {
-    nfAnfGUI nfAnf(controller, projekt, false, 0);
-    nfAnf.ShowDialog();
+    nfAnfGUI^ nfAnf = gcnew nfAnfGUI(controller, projekt, false, 0);
+    nfAnf->ShowDialog();
 }
 
 Void GUI::neuToolStripMenuItem_Click(Object^ sender, EventArgs^ e) {
@@ -121,9 +114,11 @@ Void GUI::neuToolStripMenuItem_Click(Object^ sender, EventArgs^ e) {
     sfd->OverwritePrompt = true;
     sfd->AddExtension = true;
     if(sfd->ShowDialog() == Windows::Forms::DialogResult::OK) {
-        StreamWriter^ sw = gcnew StreamWriter(sfd->FileName);
-        sw->WriteLine("");
-        sw->Close();
+        StreamWriter^ sw;
+        if((sw = gcnew StreamWriter(sfd->FileName)) != nullptr) {
+            sw->WriteLine("");
+            sw->Close();
+        }
         projekt = controller->openProject(msclr::interop::marshal_as<string>(sfd->FileName), this).get();
     }
 }

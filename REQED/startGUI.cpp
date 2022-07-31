@@ -24,9 +24,11 @@ Void startGUI::neuButton_Click(Object^ sender, EventArgs^ e) {
     sfd->OverwritePrompt = true;
     sfd->AddExtension = true;
     if(sfd->ShowDialog() == Windows::Forms::DialogResult::OK) {
-        StreamWriter^ sw = gcnew StreamWriter(sfd->FileName);
-        sw->WriteLine("");
-        sw->Close();
+        StreamWriter^ sw;
+        if((sw = gcnew StreamWriter(sfd->FileName)) != nullptr) {
+            sw->WriteLine("");
+            sw->Close();
+        }
         main->setProjekt(controller->openProject(msclr::interop::marshal_as<string>(sfd->FileName), main).get());
         gueltig = true;
         this->Close();
