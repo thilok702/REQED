@@ -14,7 +14,7 @@ private:
 	std::string pfad;
 	std::vector<std::shared_ptr<FunktionaleAnforderung>> F_anf;
 	std::vector<std::shared_ptr<NichtFunktionaleAnforderung>> NF_anf;
-	bool saved;
+	bool saved = true;
 	gcroot<View^> view;
 public:
 	Projekt(std::string pfad, View^ view);

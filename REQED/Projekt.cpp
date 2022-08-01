@@ -5,20 +5,75 @@
 #include <memory>
 #include <iostream>
 #include <fstream>
+#include <iostream>
+#include <sstream>
+#include <vector>
+
 using namespace std;
 
 Projekt::Projekt(string pfad_in, View^ view) {
 	pfad = pfad_in;
-	saved = true;
+	saved = true ;
 	this->view = view;
 	
 	ifstream save_file(pfad_in);
-	string line; string item; 
+	string line; 
+	string item;
+	int read_status = 0; 
 	ofstream save_file2("tempoutput.txt");
 	if (save_file.is_open()) {
-		while (getline(save_file, line, '#')) {
-			save_file2 << line;
+		while (getline(save_file, line)) {
+			if (line == "F") { read_status = 1; }
+			else if (line == "NF") { read_status = 2; }
+			else if(read_status == 1){
+				std::stringstream line_stream(line);
+				string bed;
+				getline(line_stream, bed, '#');save_file2 << bed;
+				string sys;
+				
+				getline(line_stream, sys, '#');save_file2 << sys;
+				string obj;
+				
+				getline(line_stream, obj, '#');save_file2 << obj;
+				string proz;
+				
+				getline(line_stream, proz, '#');save_file2 << proz;
+				string funkt;
+				
+				getline(line_stream, funkt, '#');save_file2 << funkt;
+				string verb;
+				
+				getline(line_stream, verb, '#');save_file2 << verb;
+				//shared_ptr<FunktionaleAnforderung> point (new FunktionaleAnforderung(bed,sys,obj,proz,getFunktionalitaet(funkt), getVerbindlichkeit(verb)));
+				//this->funktionaleAnforderungHinzu(point);
+			}
+			else if (read_status == 2) {
+				std::stringstream line_stream(line);
+				string bed;
+				getline(line_stream, bed, '#'); save_file2 << bed;
+				string geg;
+
+				getline(line_stream, geg, '#'); save_file2 << geg;
+				string eig;
+
+				getline(line_stream, eig, '#'); save_file2 << eig;
+				string oper;
+
+				getline(line_stream, oper, '#'); save_file2 << oper;
+				string wert;
+
+				getline(line_stream, wert, '#'); save_file2 << wert;
+				string verb;
+
+				getline(line_stream, verb, '#'); save_file2 << verb;
+				shared_ptr<NichtFunktionaleAnforderung> point(new NichtFunktionaleAnforderung(bed, geg, eig, oper, wert, getVerbindlichkeit(verb)));
+			    this->nichtFuntkionaleAnforderungHinzu(point);
+			}
+			save_file2 << line << "\n";
+			save_file2 << read_status;
+			
 		}
+		saved = true;
 	}
 }
 
@@ -28,7 +83,7 @@ void Projekt::projektSpeichern() {
 	{
 		save_file << "F" << "\n";
 		for (int i = 0; i != F_anf.size(); i++) {
-			save_file << "#";
+		
 			save_file << F_anf[i]->getBedingung();
 			save_file << "#";
 			save_file << F_anf[i]->getSystem();
@@ -42,10 +97,11 @@ void Projekt::projektSpeichern() {
 			save_file << F_anf[i]->getVerbindlichkeit();
 			save_file << "#";
 			save_file << "\n";
+			
 		}
 		save_file << "NF" << "\n";
 		for (int i = 0; i != NF_anf.size(); i++) {
-			save_file << "#";
+			
 			save_file << NF_anf[i]->getBedingung();
 			save_file << "#";
 			save_file << NF_anf[i]->getGegenstand();
@@ -59,6 +115,7 @@ void Projekt::projektSpeichern() {
 			save_file << NF_anf[i]->getVerbindlichkeit();
 			save_file << "#";
 			save_file << "\n";
+			
 		}
 	}
 	saved = true;

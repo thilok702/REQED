@@ -71,6 +71,9 @@
       <DependentUpon>startGUI.h</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="tempoutput.txt" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <ProjectGuid>{7D29C27E-0098-4D98-BEB2-827D23A1D5F2}</ProjectGuid>
