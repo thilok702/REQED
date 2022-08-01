@@ -3,6 +3,8 @@
 #include "ArtFunktionalitaet.h"
 #include <string>
 #include <memory>
+#include <iostream>
+#include <fstream>
 using namespace std;
 
 Projekt::Projekt(string pfad_in, View^ view) {
@@ -12,6 +14,40 @@ Projekt::Projekt(string pfad_in, View^ view) {
 }
 
 void Projekt::projektSpeichern() {
+	ofstream save_file(pfad );
+	if (save_file.is_open())
+	{
+		save_file << "F" << "\n";
+		for (int i = 0; i != F_anf.size(); i++) {
+			save_file << F_anf[i]->getBedingung();
+			save_file << "#";
+			save_file << F_anf[i]->getSystem();
+			save_file << "#";
+			save_file << F_anf[i]->getObjekt();
+			save_file << "#";
+			save_file << F_anf[i]->getProzesswort();
+			save_file << "#";
+			save_file << F_anf[i]->getFunktionalitaet();
+			save_file << "#";
+			save_file << F_anf[i]->getVerbindlichkeit();
+			save_file << "\n";
+		}
+		save_file << "NF" << "\n";
+		for (int i = 0; i != NF_anf.size(); i++) {
+			save_file << NF_anf[i]->getBedingung();
+			save_file << "#";
+			save_file << NF_anf[i]->getGegenstand();
+			save_file << "#";
+			save_file << NF_anf[i]->getEigenschaft();
+			save_file << "#";
+			save_file << NF_anf[i]->getOperator();
+			save_file << "#";
+			save_file << NF_anf[i]->getWert();
+			save_file << "#";
+			save_file << NF_anf[i]->getVerbindlichkeit();
+			save_file << "\n";
+		}
+	}
 	saved = true;
 }
 
