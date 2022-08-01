@@ -11,6 +11,15 @@ Projekt::Projekt(string pfad_in, View^ view) {
 	pfad = pfad_in;
 	saved = true;
 	this->view = view;
+	
+	ifstream save_file(pfad_in);
+	string line; string item; 
+	ofstream save_file2("tempoutput.txt");
+	if (save_file.is_open()) {
+		while (getline(save_file, line, '#')) {
+			save_file2 << line;
+		}
+	}
 }
 
 void Projekt::projektSpeichern() {
@@ -19,6 +28,7 @@ void Projekt::projektSpeichern() {
 	{
 		save_file << "F" << "\n";
 		for (int i = 0; i != F_anf.size(); i++) {
+			save_file << "#";
 			save_file << F_anf[i]->getBedingung();
 			save_file << "#";
 			save_file << F_anf[i]->getSystem();
@@ -30,10 +40,12 @@ void Projekt::projektSpeichern() {
 			save_file << F_anf[i]->getFunktionalitaet();
 			save_file << "#";
 			save_file << F_anf[i]->getVerbindlichkeit();
+			save_file << "#";
 			save_file << "\n";
 		}
 		save_file << "NF" << "\n";
 		for (int i = 0; i != NF_anf.size(); i++) {
+			save_file << "#";
 			save_file << NF_anf[i]->getBedingung();
 			save_file << "#";
 			save_file << NF_anf[i]->getGegenstand();
@@ -45,6 +57,7 @@ void Projekt::projektSpeichern() {
 			save_file << NF_anf[i]->getWert();
 			save_file << "#";
 			save_file << NF_anf[i]->getVerbindlichkeit();
+			save_file << "#";
 			save_file << "\n";
 		}
 	}
