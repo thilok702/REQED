@@ -114,6 +114,7 @@ void Projekt::projektSpeichern() {
 		}
 	}
 	saved = true;
+	view->modelChanged();
 }
 
 void Projekt::exportTXT(string pfad) {

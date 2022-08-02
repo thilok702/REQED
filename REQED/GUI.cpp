@@ -233,7 +233,7 @@ Void GUI::nfAnfButton_Click(Object^ sender, EventArgs^ e) {
 
 Void GUI::neuToolStripMenuItem_Click(Object^ sender, EventArgs^ e) {
     if(!controller->projektSaved()) {
-        if(MessageBox::Show("Projekt nicht gespeichert, wollen sie fortfahren", "", MessageBoxButtons::OKCancel, MessageBoxIcon::Question) != Windows::Forms::DialogResult::OK) {
+        if(MessageBox::Show("Projekt nicht gespeichert, wollen sie fortfahren?", "neues Projekt", MessageBoxButtons::OKCancel, MessageBoxIcon::Question) != Windows::Forms::DialogResult::OK) {
             return;
         }
     }
@@ -255,7 +255,7 @@ Void GUI::neuToolStripMenuItem_Click(Object^ sender, EventArgs^ e) {
 
 Void GUI::öffnenToolStripMenuItem_Click(Object^ sender, EventArgs^ e) {
     if(!controller->projektSaved()) {
-        if(MessageBox::Show("Projekt nicht gespeichert, wollen sie fortfahren", "hui", MessageBoxButtons::OKCancel, MessageBoxIcon::Question) != Windows::Forms::DialogResult::OK) {
+        if(MessageBox::Show("Projekt nicht gespeichert, wollen sie fortfahren?", "Projekt öfnnen", MessageBoxButtons::OKCancel, MessageBoxIcon::Question) != Windows::Forms::DialogResult::OK) {
             return;
         }
     }
