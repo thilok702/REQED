@@ -316,6 +316,7 @@ namespace REQED {
 	private: System::Void fAnfGUI_Load(System::Object^ sender, System::EventArgs^ e);
 	private: System::Void changed(System::Object^ sender, System::EventArgs^ e);
 	private: System::String^ getFunktionalitaet(int index);
+	private: int getIndexFromFunkt(std::string funkt);
 	private: System::Void okButton_Click(System::Object^ sender, System::EventArgs^ e);
 	private: System::Void abbrechenButton_Click(System::Object^ sender, System::EventArgs^ e);
 };
