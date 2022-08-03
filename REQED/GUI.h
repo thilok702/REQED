@@ -10,12 +10,6 @@ namespace REQED {
 	/// </summary>
 	public ref class GUI: public System::Windows::Forms::Form, public View {
 	private: Controller* controller;
-	private: System::ComponentModel::BackgroundWorker^ backgroundWorker1;
-
-
-
-
-
 	private: Projekt* projekt;
 	public:
 		GUI() {
@@ -23,7 +17,6 @@ namespace REQED {
 			controller = new Controller();
 			InitializeComponent();
 		}
-		
 		virtual void modelChanged();
 		void setProjekt(Projekt* proj);
 	private:
@@ -81,7 +74,6 @@ namespace REQED {
 			this->jSONDateiToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->nfAnf = (gcnew System::Windows::Forms::Label());
 			this->nfAnfButton = (gcnew System::Windows::Forms::Button());
-			this->backgroundWorker1 = (gcnew System::ComponentModel::BackgroundWorker());
 			this->toolStrip1->SuspendLayout();
 			this->SuspendLayout();
 			// 

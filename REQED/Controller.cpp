@@ -12,7 +12,6 @@ Controller::Controller() {
 
 shared_ptr<Projekt>& Controller::openProject(string pfad, View^ gui) {
 	aktProjekt = make_shared<Projekt>(pfad, gui);
-	
 	return aktProjekt;
 }
 

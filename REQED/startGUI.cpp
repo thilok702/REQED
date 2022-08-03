@@ -11,6 +11,8 @@ Void startGUI::oeffnenButton_Click(Object^ sender, EventArgs^ e) {
     ofd->Filter = "REQED (*.RQ)|*.RQ";
     if(ofd->ShowDialog() == Windows::Forms::DialogResult::OK) {
         main->setProjekt(controller->openProject(msclr::interop::marshal_as<string>(ofd->FileName), main).get());
+        string leer[1] = {""};
+        controller->processInput(9, leer);
         gueltig = true;
         this->Close();
     }
@@ -30,6 +32,8 @@ Void startGUI::neuButton_Click(Object^ sender, EventArgs^ e) {
             sw->Close();
         }
         main->setProjekt(controller->openProject(msclr::interop::marshal_as<string>(sfd->FileName), main).get());
+        string leer[1] = {""};
+        controller->processInput(9, leer);
         gueltig = true;
         this->Close();
     }

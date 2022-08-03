@@ -93,7 +93,7 @@ void GUI::show() {
     yAnf = this->nfAnf->Location.Y + 20;
     for(int i = 0; i < projekt->anzNFanf(); i++) {
         string anf = "";
-        string tmp = projekt->getFanf(i)->toString();
+        string tmp = projekt->getNFanf(i)->toString();
         while(tmp.size() > 80) {
             size_t pos = tmp.rfind(" ", 80);
             anf += tmp.substr(0, pos) + "\r\n";
@@ -163,7 +163,7 @@ Void GUI::buttonLoeschen_Click(Object^ sender, EventArgs^ e) {
     Button^ button = safe_cast<Button^>(sender);
     auto tmp = button->Name->Split('_');
     String^ num = tmp[1];
-    if(tmp[0][tmp->Length - 2] != 'n') {
+    if(tmp[0][tmp[0]->Length - 2] != 'n') {
         this->Controls->Remove(button);
         this->Controls->Remove(this->Controls->Find("lf_" + num, false)[0]);
         this->Controls->Remove(this->Controls->Find("bf_" + num, false)[0]);
