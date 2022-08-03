@@ -12,7 +12,7 @@ Void fAnfGUI::fAnfGUI_Load(Object^ sender, EventArgs^ e) {
 		bedingungBox->Text = gcnew String(anf->getBedingung().c_str());
 		verbindlichkeitCombobox->Text = gcnew String(verbindlichkeitToString(anf->getVerbindlichkeit()).c_str());
 		systemBox->Text = gcnew String(anf->getSystem().c_str());
-		funktionalitaetCombobox->Text = gcnew String(funktionalitaetToString(anf->getFunktionalitaet()).c_str());
+		funktionalitaetCombobox->SelectedIndex = getIndexFromFunkt(funktionalitaetToString(anf->getFunktionalitaet()));;
 		objektBox->Text = gcnew String(anf->getObjekt().c_str());
 		prozesswortBox->Text = gcnew String(anf->getProzesswort().c_str());
 	}
@@ -53,6 +53,16 @@ String^ fAnfGUI::getFunktionalitaet(int index) {
 		return "fähig sein";
 	}
 	return "";
+}
+
+int fAnfGUI::getIndexFromFunkt(string funkt) {
+	if(funkt == "dem/der Benutzer/-in die Möglichkeit bieten") {
+		return 1;
+	} else if(funkt == "fähig sein") {
+		return 2;
+	} else {
+		return 0;
+	}
 }
 
 Void fAnfGUI::okButton_Click(Object^ sender, EventArgs^ e) {

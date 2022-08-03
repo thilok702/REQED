@@ -37,8 +37,8 @@ void Projekt::load()
 				string bed;
 				getline(line_stream, bed, '#'); save_file2 << bed;
 				string sys;
-
-				getline(line_stream, sys, '#'); save_file2 << sys;
+				
+				getline(line_stream, sys, '#');save_file2 << sys;
 				string obj;
 
 				getline(line_stream, obj, '#'); save_file2 << obj;
@@ -85,11 +85,9 @@ void Projekt::load()
 
 void Projekt::projektSpeichern() {
 	ofstream save_file(pfad );
-	if (save_file.is_open())
-	{
+	if (save_file.is_open()) {
 		save_file << "F" << "\n";
 		for (int i = 0; i != F_anf.size(); i++) {
-		
 			save_file << F_anf[i]->getBedingung();
 			save_file << "#";
 			save_file << F_anf[i]->getSystem();
@@ -103,11 +101,9 @@ void Projekt::projektSpeichern() {
 			save_file << F_anf[i]->getVerbindlichkeit();
 			save_file << "#";
 			save_file << "\n";
-			
 		}
 		save_file << "NF" << "\n";
 		for (int i = 0; i != NF_anf.size(); i++) {
-			
 			save_file << NF_anf[i]->getBedingung();
 			save_file << "#";
 			save_file << NF_anf[i]->getGegenstand();
@@ -121,10 +117,10 @@ void Projekt::projektSpeichern() {
 			save_file << NF_anf[i]->getVerbindlichkeit();
 			save_file << "#";
 			save_file << "\n";
-			
 		}
 	}
 	saved = true;
+	view->modelChanged();
 }
 
 void Projekt::exportTXT(string pfad) {
@@ -198,4 +194,12 @@ const std::shared_ptr<FunktionaleAnforderung>& Projekt::getFanf(int index) {
 
 const std::shared_ptr<NichtFunktionaleAnforderung>& Projekt::getNFanf(int index) {
 	return NF_anf[index];
+}
+
+int Projekt::anzFanf() {
+	return (int)F_anf.size();
+}
+
+int Projekt::anzNFanf() {
+	return (int)NF_anf.size();
 }

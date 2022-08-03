@@ -10,6 +10,12 @@ namespace REQED {
 	/// </summary>
 	public ref class GUI: public System::Windows::Forms::Form, public View {
 	private: Controller* controller;
+	private: System::ComponentModel::BackgroundWorker^ backgroundWorker1;
+
+
+
+
+
 	private: Projekt* projekt;
 	public:
 		GUI() {
@@ -33,7 +39,7 @@ namespace REQED {
 				delete components;
 			}
 			delete controller;
-			//delete projekt; wuerde Exception produzieren, da per shared_ptr erstellt 
+			//delete projekt; wuerde Exception produzieren, da per shared_ptr erstellt
 		}
 	private: System::Windows::Forms::Label^ fAnf;
 	private: System::Windows::Forms::Button^ fAnfButton;
@@ -75,6 +81,7 @@ namespace REQED {
 			this->jSONDateiToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->nfAnf = (gcnew System::Windows::Forms::Label());
 			this->nfAnfButton = (gcnew System::Windows::Forms::Button());
+			this->backgroundWorker1 = (gcnew System::ComponentModel::BackgroundWorker());
 			this->toolStrip1->SuspendLayout();
 			this->SuspendLayout();
 			// 
@@ -114,7 +121,7 @@ namespace REQED {
 			this->toolStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(2) { this->DateiDropDown, this->exportDropDown });
 			this->toolStrip1->Location = System::Drawing::Point(0, 0);
 			this->toolStrip1->Name = L"toolStrip1";
-			this->toolStrip1->Size = System::Drawing::Size(890, 27);
+			this->toolStrip1->Size = System::Drawing::Size(834, 27);
 			this->toolStrip1->TabIndex = 3;
 			this->toolStrip1->Text = L"toolStrip1";
 			// 
@@ -202,7 +209,7 @@ namespace REQED {
 			this->nfAnf->AutoSize = true;
 			this->nfAnf->Font = (gcnew System::Drawing::Font(L"Arial", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->nfAnf->Location = System::Drawing::Point(23, 203);
+			this->nfAnf->Location = System::Drawing::Point(23, 200);
 			this->nfAnf->Name = L"nfAnf";
 			this->nfAnf->Size = System::Drawing::Size(266, 19);
 			this->nfAnf->TabIndex = 4;
@@ -218,7 +225,7 @@ namespace REQED {
 			this->nfAnfButton->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->nfAnfButton->ForeColor = System::Drawing::Color::White;
-			this->nfAnfButton->Location = System::Drawing::Point(27, 225);
+			this->nfAnfButton->Location = System::Drawing::Point(27, 222);
 			this->nfAnfButton->Name = L"nfAnfButton";
 			this->nfAnfButton->Size = System::Drawing::Size(70, 30);
 			this->nfAnfButton->TabIndex = 5;
@@ -228,23 +235,22 @@ namespace REQED {
 			// 
 			// GUI
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
-			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
+			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::None;
 			this->AutoScroll = true;
-			this->AutoSize = true;
 			this->BackColor = System::Drawing::Color::White;
-			this->ClientSize = System::Drawing::Size(890, 613);
+			this->ClientSize = System::Drawing::Size(834, 561);
+			this->Controls->Add(this->fAnfButton);
 			this->Controls->Add(this->nfAnfButton);
 			this->Controls->Add(this->nfAnf);
 			this->Controls->Add(this->toolStrip1);
-			this->Controls->Add(this->fAnfButton);
 			this->Controls->Add(this->fAnf);
 			this->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 8.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->ForeColor = System::Drawing::Color::Black;
-			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedSingle;
+			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedDialog;
 			this->MaximizeBox = false;
 			this->Name = L"GUI";
+			this->SizeGripStyle = System::Windows::Forms::SizeGripStyle::Hide;
 			this->Text = L"REQED";
 			this->FormClosing += gcnew System::Windows::Forms::FormClosingEventHandler(this, &GUI::GUI_FormClosing);
 			this->Load += gcnew System::EventHandler(this, &GUI::GUI_Load);
@@ -257,7 +263,8 @@ namespace REQED {
 	#pragma endregion
 
 	private: System::Void GUI_Load(System::Object^ sender, System::EventArgs^ e);
-	//private: System::Void button_Click(System::Object^ sender, System::EventArgs ^ e);
+	private: System::Void buttonLoeschen_Click(System::Object^ sender, System::EventArgs ^ e);
+	private: System::Void buttonBearbeiten_Click(System::Object^ sender, System::EventArgs^ e);
 	private: System::Void neuToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e);
 	private: System::Void öffnenToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e);
 	private: System::Void speichernToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e);
@@ -266,5 +273,5 @@ namespace REQED {
 	private: System::Void fAnfButton_Click(System::Object^ sender, System::EventArgs^ e);
 	private: System::Void nfAnfButton_Click(System::Object^ sender, System::EventArgs^ e);
 	private: System::Void GUI_FormClosing(System::Object^ sender, System::Windows::Forms::FormClosingEventArgs^ e);
-	};
+};
 }
