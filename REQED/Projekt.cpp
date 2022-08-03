@@ -77,7 +77,7 @@ void Projekt::load()
 				this->nichtFuntkionaleAnforderungHinzu(point);
 			}
 			
-			save_file2 << read_status;
+			
 
 		}
 	}
@@ -123,8 +123,20 @@ void Projekt::projektSpeichern() {
 	view->modelChanged();
 }
 
-void Projekt::exportTXT(string pfad) {
-
+void Projekt::exportTXT(string pfad_in) {
+	ofstream save_file(pfad_in);
+	if (save_file.is_open()) {
+		save_file << "Funktionale Anforderungen:" << "\n";
+		for (int i = 0; i != F_anf.size(); i++) {
+			save_file << F_anf[i]->toString();
+			save_file << "\n";
+		}
+		save_file << "Nicht Funktionsle Anforderungen:" << "\n";
+		for (int i = 0; i != NF_anf.size(); i++) {
+			save_file << NF_anf[i]->toString();
+			save_file << "\n";
+		}
+	}
 }
 
 void Projekt::exportJSON(string pfad) {
