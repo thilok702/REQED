@@ -59,12 +59,13 @@ void Projekt::load() {
 				this->nichtFuntkionaleAnforderungHinzu(make_shared<NichtFunktionaleAnforderung>(bed, geg, eig, oper, wert, getVerbindlichkeit(verb)));
 			}
 		}
+		save_file.close();
 	}
 }
 
 void Projekt::projektSpeichern() {
 	ofstream save_file(pfad );
-	if (save_file.is_open()) {
+	if(save_file.is_open()) {
 		save_file << "F" << "\n";
 		for (int i = 0; i != F_anf.size(); i++) {
 			save_file << F_anf[i]->getBedingung();
@@ -97,6 +98,7 @@ void Projekt::projektSpeichern() {
 			save_file << "#";
 			save_file << "\n";
 		}
+		save_file.close();
 	}
 	saved = true;
 	view->modelChanged();
@@ -104,7 +106,7 @@ void Projekt::projektSpeichern() {
 
 void Projekt::exportTXT(string pfad_in) {
 	ofstream save_file(pfad_in);
-	if (save_file.is_open()) {
+	if(save_file.is_open()) {
 		save_file << "Funktionale Anforderungen:" << "\n";
 		for (int i = 0; i != F_anf.size(); i++) {
 			save_file << F_anf[i]->toString();
@@ -115,6 +117,7 @@ void Projekt::exportTXT(string pfad_in) {
 			save_file << NF_anf[i]->toString();
 			save_file << "\n";
 		}
+		save_file.close();
 	}
 }
 
