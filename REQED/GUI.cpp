@@ -11,7 +11,7 @@ using namespace System::IO;
 using namespace REQED;
 
 void GUI::setProjekt(Projekt* proj) {
-    projekt = proj;
+    this->projekt = proj;
 }
 
 void GUI::modelChanged() {
@@ -63,6 +63,8 @@ Void GUI::GUI_Load(System::Object^ sender, System::EventArgs^ e) {
             f.close();
             if(f.good()) {
                 projekt = controller->openProject(msclr::interop::marshal_as<string>(tmp), this).get();
+                string leer[1] = { "" };
+                controller->processInput(9, leer);
             } else {
                 StreamWriter^ sw;
                 if((sw = gcnew StreamWriter("letztesProjekt.txt")) != nullptr) {

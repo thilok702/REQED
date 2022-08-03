@@ -16,34 +16,41 @@ Projekt::Projekt(string pfad_in, View^ view) {
 	saved = true ;
 	this->view = view;
 	
-	ifstream save_file(pfad_in);
-	string line; 
+	
+	
+}
+
+void Projekt::load()
+{
+
+	ifstream save_file(pfad);
+	string line;
 	string item;
-	int read_status = 0; 
+	int read_status = 0;
 	ofstream save_file2("tempoutput.txt");
 	if (save_file.is_open()) {
 		while (getline(save_file, line)) {
 			if (line == "F") { read_status = 1; }
 			else if (line == "NF") { read_status = 2; }
-			else if(read_status == 1){
+			else if (read_status == 1) {
 				std::stringstream line_stream(line);
 				string bed;
-				getline(line_stream, bed, '#');save_file2 << bed;
+				getline(line_stream, bed, '#'); save_file2 << bed;
 				string sys;
-				
-				getline(line_stream, sys, '#');save_file2 << sys;
+
+				getline(line_stream, sys, '#'); save_file2 << sys;
 				string obj;
-				
-				getline(line_stream, obj, '#');save_file2 << obj;
+
+				getline(line_stream, obj, '#'); save_file2 << obj;
 				string proz;
-				
-				getline(line_stream, proz, '#');save_file2 << proz;
+
+				getline(line_stream, proz, '#'); save_file2 << proz;
 				string funkt;
-				
-				getline(line_stream, funkt, '#');save_file2 << funkt;
+
+				getline(line_stream, funkt, '#'); save_file2 << funkt;
 				string verb;
-				
-				getline(line_stream, verb, '#');save_file2 << verb;
+
+				getline(line_stream, verb, '#'); save_file2 << verb;
 				//shared_ptr<FunktionaleAnforderung> point (new FunktionaleAnforderung(bed,sys,obj,proz,getFunktionalitaet(funkt), getVerbindlichkeit(verb)));
 				//this->funktionaleAnforderungHinzu(point);
 			}
@@ -67,13 +74,12 @@ Projekt::Projekt(string pfad_in, View^ view) {
 
 				getline(line_stream, verb, '#'); save_file2 << verb;
 				shared_ptr<NichtFunktionaleAnforderung> point(new NichtFunktionaleAnforderung(bed, geg, eig, oper, wert, getVerbindlichkeit(verb)));
-			    this->nichtFuntkionaleAnforderungHinzu(point);
+				this->nichtFuntkionaleAnforderungHinzu(point);
 			}
-			save_file2 << line << "\n";
-			save_file2 << read_status;
 			
+			save_file2 << read_status;
+
 		}
-		saved = true;
 	}
 }
 
@@ -178,6 +184,7 @@ void Projekt::nichtFunktionaleAnforderungloeschen(int index) {
 }
 
 bool Projekt::isSaved() {
+	
 	return saved;
 }
 

@@ -18,6 +18,7 @@ private:
 	gcroot<View^> view;
 public:
 	Projekt(std::string pfad, View^ view);
+	void load();
 	void projektSpeichern();
 	void exportTXT(std::string pfad);
 	void exportJSON(std::string pfad);

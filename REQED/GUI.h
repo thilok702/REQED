@@ -17,9 +17,12 @@ namespace REQED {
 			controller = new Controller();
 			InitializeComponent();
 		}
-		void setProjekt(Projekt* proj);
+		
 		virtual void modelChanged();
+		void setProjekt(Projekt* proj);
 	private:
+		
+	   
 		void show();
 	protected:
 		/// <summary>

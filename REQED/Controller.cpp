@@ -12,6 +12,7 @@ Controller::Controller() {
 
 shared_ptr<Projekt>& Controller::openProject(string pfad, View^ gui) {
 	aktProjekt = make_shared<Projekt>(pfad, gui);
+	
 	return aktProjekt;
 }
 
@@ -43,6 +44,9 @@ void Controller::processInput(int methode, string args[]) {
 		break;
 	case 8:
 		aktProjekt->nichtFunktionaleAnforderungloeschen(stoi(args[0]));
+		break;
+	case 9:
+		aktProjekt->load();
 		break;
 	}
 }
