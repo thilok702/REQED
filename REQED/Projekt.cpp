@@ -132,7 +132,9 @@ void Projekt::exportJSON(string pfad_in) {
 			save_file << "	{\n";
 			
 			save_file << "		\"identifier\" :"+ to_string(i) + " ,\n";
-			save_file << "		\"condition\" : \""+F_anf[i]->getBedingung() + " \",\n";
+			if (F_anf[i]->getBedingung() != "") {
+				save_file << "		\"condition\" : \"" + F_anf[i]->getBedingung() + " \",\n";
+			}
 			save_file << "		\"binding\" : "+ verbindlichkeitToNumber(F_anf[i]->getVerbindlichkeit()) + ",\n";
 			save_file << "		\"type\" : " + funktionalitaetToNumber(F_anf[i]->getFunktionalitaet()) + ",\n";
 			save_file << "		\"actor\" : ,\n";
@@ -143,7 +145,9 @@ void Projekt::exportJSON(string pfad_in) {
 		for (int i = 0; i != NF_anf.size(); i++) {
 			save_file << "	{\n";
 			save_file << "		\"identifier\" :" + to_string(i+(F_anf.size())) + " ,\n";
-			save_file << "		\"condition\" : \"" + NF_anf[i]->getBedingung() + "\",\n";
+			if (F_anf[i]->getBedingung() != "") {
+				save_file << "		\"condition\" : \"" + NF_anf[i]->getBedingung() + "\",\n";
+			}
 			save_file << "		\"binding\" : " + verbindlichkeitToNumber(NF_anf[i]->getVerbindlichkeit()) + ",\n";
 			save_file << "		\"Property\" : \"" + NF_anf[i]->getEigenschaft() + "\", \n";
 			save_file << "		\"observed object\" : \"" + NF_anf[i]->getGegenstand() + "\", \n";
