@@ -15,6 +15,17 @@ static std::string funktionalitaetToString(ArtFunktionalitaet funk) {
 	return "";
 }
 
+static std::string funktionalitaetToNumber(ArtFunktionalitaet funk) {
+	switch (funk) {
+	case Benutzerinteraktion:
+		return "1";
+	case Schnittstellenanforderung:
+		return "2";
+	case Systemaktivitaet:
+		return "0";
+	}
+	return "";
+}
 
 static ArtFunktionalitaet getFunktionalitaet(std::string funkt) {
 	if(funkt == "Systemaktivität") {

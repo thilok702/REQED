@@ -121,8 +121,34 @@ void Projekt::exportTXT(string pfad_in) {
 	}
 }
 
-void Projekt::exportJSON(string pfad) {
+void Projekt::exportJSON(string pfad_in) {
+	ofstream save_file(pfad_in);
+	if (save_file.is_open()) {
+		save_file << "{" << "\n";
+		save_file << "\"reqed\" : \"1.0\"," << "\n";
+		save_file << "\"system\" : \"Das System\"," << "\n";
+		save_file << "\"requirements\" : [" << "\n";
+		for (int i = 0; i != F_anf.size(); i++) {
+			save_file << "	{\n";
+			
+			save_file << "		\"identifier\" :"+ to_string(i) + " \n";
+			save_file << "		\"condition\" :"+F_anf[i]->getBedingung() + " \n";
+			save_file << "		\"binding\" : \""+ verbindlichkeitToNumber(F_anf[i]->getVerbindlichkeit()) + "\",\n";
+			save_file << "		\"type\" : \"" + funktionalitaetToNumber(F_anf[i]->getFunktionalitaet()) + "\",\n";
+			save_file << "		\"object\" : "+ F_anf[i]->getObjekt() + "\n";
+			save_file << "		\"process\" : " + F_anf[i]->getProzesswort() + "\n";
+			save_file << "	}\n";
+		}
+		for (int i = 0; i != NF_anf.size(); i++) {
+			save_file << "	{\n";
+			save_file << "		\"identifier\" :" + to_string(i+(F_anf.size())) + " \n";
+			save_file << "	}\n";
 
+		}
+		save_file << "]";
+		save_file << "}" ;
+		save_file.close();
+	}
 }
 
 void Projekt::funktionaleAnforderungHinzu(shared_ptr<FunktionaleAnforderung> anf) {

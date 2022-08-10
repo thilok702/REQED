@@ -17,6 +17,18 @@ static std::string verbindlichkeitToString(Verbindlichkeit verb) {
 	return "";
 }
 
+static std::string verbindlichkeitToNumber(Verbindlichkeit verb) {
+	switch (verb) {
+	case muss:
+		return "0";
+	case sollte:
+		return "1";
+	case wird:
+		return "2";
+	}
+	return "";
+}
+
 static Verbindlichkeit getVerbindlichkeit(std::string verb) {
 	if(verb == "muss") {
 		return Verbindlichkeit::muss;
