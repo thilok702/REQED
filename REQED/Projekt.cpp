@@ -131,17 +131,24 @@ void Projekt::exportJSON(string pfad_in) {
 		for (int i = 0; i != F_anf.size(); i++) {
 			save_file << "	{\n";
 			
-			save_file << "		\"identifier\" :"+ to_string(i) + " \n";
-			save_file << "		\"condition\" :"+F_anf[i]->getBedingung() + " \n";
-			save_file << "		\"binding\" : \""+ verbindlichkeitToNumber(F_anf[i]->getVerbindlichkeit()) + "\",\n";
-			save_file << "		\"type\" : \"" + funktionalitaetToNumber(F_anf[i]->getFunktionalitaet()) + "\",\n";
-			save_file << "		\"object\" : "+ F_anf[i]->getObjekt() + "\n";
-			save_file << "		\"process\" : " + F_anf[i]->getProzesswort() + "\n";
+			save_file << "		\"identifier\" :"+ to_string(i) + " ,\n";
+			save_file << "		\"condition\" : \""+F_anf[i]->getBedingung() + " \",\n";
+			save_file << "		\"binding\" : "+ verbindlichkeitToNumber(F_anf[i]->getVerbindlichkeit()) + ",\n";
+			save_file << "		\"type\" : " + funktionalitaetToNumber(F_anf[i]->getFunktionalitaet()) + ",\n";
+			save_file << "		\"actor\" : ,\n";
+			save_file << "		\"object\" : \""+ F_anf[i]->getObjekt() + "\",\n";
+			save_file << "		\"process\" : \"" + F_anf[i]->getProzesswort() + "\"\n";
 			save_file << "	}\n";
 		}
 		for (int i = 0; i != NF_anf.size(); i++) {
 			save_file << "	{\n";
-			save_file << "		\"identifier\" :" + to_string(i+(F_anf.size())) + " \n";
+			save_file << "		\"identifier\" :" + to_string(i+(F_anf.size())) + " ,\n";
+			save_file << "		\"condition\" : \"" + NF_anf[i]->getBedingung() + "\",\n";
+			save_file << "		\"binding\" : " + verbindlichkeitToNumber(NF_anf[i]->getVerbindlichkeit()) + ",\n";
+			save_file << "		\"Property\" : \"" + NF_anf[i]->getEigenschaft() + "\", \n";
+			save_file << "		\"observed object\" : \"" + NF_anf[i]->getGegenstand() + "\", \n";
+			save_file << "		\"Operator\" : \"" + NF_anf[i]->getOperator() + "\", \n";
+			save_file << "		\"Value\" : \"" + NF_anf[i]->getWert() + "\" \n";
 			save_file << "	}\n";
 
 		}
