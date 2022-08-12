@@ -38,3 +38,15 @@ static Verbindlichkeit getVerbindlichkeit(std::string verb) {
 		return Verbindlichkeit::wird;
 	}
 }
+
+static Verbindlichkeit getVerbindlichkeitfromnumber(std::string verb) {
+	if (verb == "0") {
+		return Verbindlichkeit::muss;
+	}
+	else if (verb == "1") {
+		return Verbindlichkeit::sollte;
+	}
+	else {
+		return Verbindlichkeit::wird;
+	}
+}

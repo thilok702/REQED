@@ -41,7 +41,7 @@ void Projekt::load() {
 				getline(line_stream, funkt, '#');
 				string verb;
 				getline(line_stream, verb, '#');
-				this->funktionaleAnforderungHinzu(make_shared<FunktionaleAnforderung>(bed, sys, obj, proz, getFunktionalitaet(funkt), getVerbindlichkeit(verb)));
+				this->funktionaleAnforderungHinzu(make_shared<FunktionaleAnforderung>(bed, sys, obj, proz, getFunktionalitaetfromNumber(funkt), getVerbindlichkeitfromnumber(verb)));
 			} else if(read_status == 2) {
 				std::stringstream line_stream(line);
 				string bed;
@@ -56,7 +56,7 @@ void Projekt::load() {
 				getline(line_stream, wert, '#');
 				string verb;
 				getline(line_stream, verb, '#');
-				this->nichtFuntkionaleAnforderungHinzu(make_shared<NichtFunktionaleAnforderung>(bed, geg, eig, oper, wert, getVerbindlichkeit(verb)));
+				this->nichtFuntkionaleAnforderungHinzu(make_shared<NichtFunktionaleAnforderung>(bed, geg, eig, oper, wert, getVerbindlichkeitfromnumber(verb)));
 			}
 		}
 		save_file.close();
@@ -78,7 +78,7 @@ void Projekt::projektSpeichern() {
 			save_file << "#";
 			save_file << F_anf[i]->getFunktionalitaet();
 			save_file << "#";
-			save_file << F_anf[i]->getVerbindlichkeit();
+			save_file << verbindlichkeitToNumber( F_anf[i]->getVerbindlichkeit());
 			save_file << "#";
 			save_file << "\n";
 		}
@@ -94,7 +94,7 @@ void Projekt::projektSpeichern() {
 			save_file << "#";
 			save_file << NF_anf[i]->getWert();
 			save_file << "#";
-			save_file << NF_anf[i]->getVerbindlichkeit();
+			save_file << verbindlichkeitToNumber( NF_anf[i]->getVerbindlichkeit());
 			save_file << "#";
 			save_file << "\n";
 		}
@@ -145,7 +145,7 @@ void Projekt::exportJSON(string pfad_in) {
 		for (int i = 0; i != NF_anf.size(); i++) {
 			save_file << "	{\n";
 			save_file << "		\"identifier\" :" + to_string(i+(F_anf.size())) + " ,\n";
-			if (F_anf[i]->getBedingung() != "") {
+			if (NF_anf[i]->getBedingung() != "") {
 				save_file << "		\"condition\" : \"" + NF_anf[i]->getBedingung() + "\",\n";
 			}
 			save_file << "		\"binding\" : " + verbindlichkeitToNumber(NF_anf[i]->getVerbindlichkeit()) + ",\n";

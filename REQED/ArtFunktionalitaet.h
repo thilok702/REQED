@@ -36,3 +36,15 @@ static ArtFunktionalitaet getFunktionalitaet(std::string funkt) {
 		return ArtFunktionalitaet::Schnittstellenanforderung;
 	}
 }
+
+static ArtFunktionalitaet getFunktionalitaetfromNumber(std::string funkt) {
+	if (funkt == "0") {
+		return ArtFunktionalitaet::Systemaktivitaet;
+	}
+	else if (funkt == "1") {
+		return ArtFunktionalitaet::Benutzerinteraktion;
+	}
+	else {
+		return ArtFunktionalitaet::Schnittstellenanforderung;
+	}
+}
