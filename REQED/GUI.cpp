@@ -151,7 +151,7 @@ Void GUI::buttonBearbeiten_Click(Object^ sender, EventArgs^ e) {
     Button^ button = safe_cast<Button^>(sender);
     auto tmp = button->Name->Split('_');
     int num = Int32::Parse(tmp[1]);
-    if(tmp[0][tmp->Length - 2] != 'n') {
+    if(tmp[0][tmp[0]->Length - 2] != 'n') {
         fAnfGUI^ fAnf = gcnew fAnfGUI(controller, projekt, true, num);
         fAnf->ShowDialog();
     } else {
