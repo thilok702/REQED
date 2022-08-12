@@ -126,7 +126,7 @@ void Projekt::exportJSON(string pfad_in) {
 	if (save_file.is_open()) {
 		save_file << "{" << "\n";
 		save_file << "\"reqed\" : \"1.0\"," << "\n";
-		save_file << "\"system\" : \"Das System\"," << "\n";
+		
 		save_file << "\"requirements\" : [" << "\n";
 		for (int i = 0; i != F_anf.size(); i++) {
 			save_file << "	{\n";
@@ -137,7 +137,10 @@ void Projekt::exportJSON(string pfad_in) {
 			}
 			save_file << "		\"binding\" : "+ verbindlichkeitToNumber(F_anf[i]->getVerbindlichkeit()) + ",\n";
 			save_file << "		\"type\" : " + funktionalitaetToNumber(F_anf[i]->getFunktionalitaet()) + ",\n";
-			save_file << "		\"actor\" : ,\n";
+			save_file << "		\"system\" : \""+F_anf[i]->getSystem() + "\"," << "\n";
+			if (funktionalitaetToNumber(F_anf[i]->getFunktionalitaet()) == "1") {
+				save_file << "		\"actor\" : \"dem/der Benutzer/-in\",\n";
+			}
 			save_file << "		\"object\" : \""+ F_anf[i]->getObjekt() + "\",\n";
 			save_file << "		\"process\" : \"" + F_anf[i]->getProzesswort() + "\"\n";
 			save_file << "	}\n";
