@@ -139,9 +139,9 @@ void Projekt::exportJSON(string pfad_in) {
 		for (int i = 0; i != F_anf.size(); i++) {
 			save_file << "	{\n";
 			
-			save_file << "		\"identifier\" : "+ to_string(i) + " ,\n";
+			save_file << "		\"identifier\" : "+ to_string(i) + ",\n";
 			if (F_anf[i]->getBedingung() != "") {
-				save_file << "		\"condition\"\t : \"" + F_anf[i]->getBedingung() + " \",\n";
+				save_file << "		\"condition\"\t : \"" + F_anf[i]->getBedingung() + "\",\n";
 			}
 			save_file << "		\"binding\"\t : "+ verbindlichkeitToNumber(F_anf[i]->getVerbindlichkeit()) + ",\n";
 			save_file << "		\"type\"\t\t : " + funktionalitaetToNumber(F_anf[i]->getFunktionalitaet()) + ",\n";
@@ -152,7 +152,7 @@ void Projekt::exportJSON(string pfad_in) {
 		}
 		for (int i = 0; i != NF_anf.size(); i++) {
 			save_file << "	{\n";
-			save_file << "		\"identifier\"\t  : " + to_string(i+(F_anf.size())) + " ,\n";
+			save_file << "		\"identifier\"\t  : " + to_string(i+(F_anf.size())) + ",\n";
 			if (NF_anf[i]->getBedingung() != "") {
 				save_file << "		\"condition\"\t\t  : \"" + NF_anf[i]->getBedingung() + "\",\n";
 			}
