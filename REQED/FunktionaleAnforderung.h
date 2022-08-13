@@ -11,8 +11,9 @@ private:
 	std::string prozesswort;
 	ArtFunktionalitaet funktionalitaet;
 	Verbindlichkeit verbindlichkeit;
+	std::string akteur;
 public:
-	FunktionaleAnforderung(std::string bed, std::string sys, std::string obj, std::string proz, ArtFunktionalitaet funkt, Verbindlichkeit verb);
+	FunktionaleAnforderung(std::string bed, std::string sys, std::string obj, std::string proz, ArtFunktionalitaet funkt, Verbindlichkeit verb, std::string akt);
 	std::string toString();
 	std::string getBedingung();
 	void setBedingung(std::string bed);
@@ -26,5 +27,7 @@ public:
 	void setFunktionalitaet(ArtFunktionalitaet funkt);
 	Verbindlichkeit getVerbindlichkeit();
 	void setVerbindlichkeit(Verbindlichkeit verb);
+	std::string getAkteur();
+	void setAkteur(std::string akt);
 };
 

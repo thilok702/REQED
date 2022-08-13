@@ -18,6 +18,8 @@ namespace REQED {
 	private: Controller* controller;
 	private: Projekt* projekt;
 	private: bool bearbeiten;
+	private: System::Windows::Forms::Label^ akteur;
+	private: System::Windows::Forms::TextBox^ akteurBox;
 	private: int index;
 	public:
 		fAnfGUI(Controller* contr, Projekt* pr, bool bearb, int ind)
@@ -89,6 +91,8 @@ namespace REQED {
 			this->okButton = (gcnew System::Windows::Forms::Button());
 			this->abbrechenButton = (gcnew System::Windows::Forms::Button());
 			this->fehler = (gcnew System::Windows::Forms::Label());
+			this->akteur = (gcnew System::Windows::Forms::Label());
+			this->akteurBox = (gcnew System::Windows::Forms::TextBox());
 			this->SuspendLayout();
 			// 
 			// bedingung
@@ -136,7 +140,6 @@ namespace REQED {
 			this->verbindlichkeitCombobox->TabIndex = 1;
 			this->verbindlichkeitCombobox->Text = L"muss";
 			this->verbindlichkeitCombobox->SelectedIndexChanged += gcnew System::EventHandler(this, &fAnfGUI::changed);
-			this->verbindlichkeitCombobox->TextUpdate += gcnew System::EventHandler(this, &fAnfGUI::changed);
 			// 
 			// funktionalitaet
 			// 
@@ -232,7 +235,7 @@ namespace REQED {
 			this->anforderung->AutoSize = true;
 			this->anforderung->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->anforderung->Location = System::Drawing::Point(17, 200);
+			this->anforderung->Location = System::Drawing::Point(17, 223);
 			this->anforderung->Name = L"anforderung";
 			this->anforderung->Size = System::Drawing::Size(0, 18);
 			this->anforderung->TabIndex = 12;
@@ -282,11 +285,36 @@ namespace REQED {
 			this->fehler->Size = System::Drawing::Size(0, 16);
 			this->fehler->TabIndex = 13;
 			// 
+			// akteur
+			// 
+			this->akteur->AutoSize = true;
+			this->akteur->Enabled = false;
+			this->akteur->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->akteur->Location = System::Drawing::Point(434, 167);
+			this->akteur->Name = L"akteur";
+			this->akteur->Size = System::Drawing::Size(51, 16);
+			this->akteur->TabIndex = 14;
+			this->akteur->Text = L"Akteur";
+			// 
+			// akteurBox
+			// 
+			this->akteurBox->Enabled = false;
+			this->akteurBox->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->akteurBox->Location = System::Drawing::Point(437, 186);
+			this->akteurBox->Name = L"akteurBox";
+			this->akteurBox->Size = System::Drawing::Size(100, 22);
+			this->akteurBox->TabIndex = 15;
+			this->akteurBox->TextChanged += gcnew System::EventHandler(this, &fAnfGUI::changed);
+			// 
 			// fAnfGUI
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(897, 396);
+			this->Controls->Add(this->akteurBox);
+			this->Controls->Add(this->akteur);
 			this->Controls->Add(this->fehler);
 			this->Controls->Add(this->abbrechenButton);
 			this->Controls->Add(this->okButton);

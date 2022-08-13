@@ -4,13 +4,14 @@
 #include <string>
 using namespace std;
 
-FunktionaleAnforderung::FunktionaleAnforderung(string bed, string sys, string obj, string proz, ArtFunktionalitaet funkt, Verbindlichkeit verb) {
+FunktionaleAnforderung::FunktionaleAnforderung(string bed, string sys, string obj, string proz, ArtFunktionalitaet funkt, Verbindlichkeit verb, string akt) {
 	bedingung = bed;
 	system = sys;
 	objekt = obj;
 	prozesswort = proz;
 	funktionalitaet = funkt;
 	verbindlichkeit = verb;
+	akteur = akt;
 }
 
 string FunktionaleAnforderung::toString() {
@@ -18,6 +19,9 @@ string FunktionaleAnforderung::toString() {
 	if(bedingung.length() == 0) {
 		anf += system + " ";
 		anf += verbindlichkeitToString(verbindlichkeit) + " ";
+		if(funktionalitaet == ArtFunktionalitaet::Benutzerinteraktion) {
+			anf += akteur + " ";
+		}
 		anf += funktionalitaetToString(funktionalitaet) + " ";
 		anf += objekt + " ";
 		anf += prozesswort + ".";
@@ -25,6 +29,9 @@ string FunktionaleAnforderung::toString() {
 		anf += bedingung + " ";
 		anf += verbindlichkeitToString(verbindlichkeit) + " ";
 		anf += system + " ";
+		if(funktionalitaet == ArtFunktionalitaet::Benutzerinteraktion) {
+			anf += akteur + " ";
+		}
 		anf += funktionalitaetToString(funktionalitaet) + " ";
 		anf += objekt + " ";
 		anf += prozesswort + ".";
@@ -78,4 +85,12 @@ Verbindlichkeit FunktionaleAnforderung::getVerbindlichkeit() {
 
 void FunktionaleAnforderung::setVerbindlichkeit(Verbindlichkeit verb) {
 	verbindlichkeit = verb;
+}
+
+string FunktionaleAnforderung::getAkteur() {
+	return akteur;
+}
+
+void FunktionaleAnforderung::setAkteur(string akt) {
+	akteur = akt;
 }
