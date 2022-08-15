@@ -16,6 +16,7 @@ string NichtFunktionaleAnforderung::toString() {
 	string anf;
 	if(bedingung.length() == 0) {
 		anf += eigenschaft + " ";
+		anf += betrachtungsgegenstand + " ";
 		anf += verbindlichkeitToString(verbindlichkeit) + " ";
 		anf += vergleichsoperator + " ";
 		anf += wert + " sein.";
