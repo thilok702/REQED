@@ -10,7 +10,7 @@ static std::string verbindlichkeitToString(Verbindlichkeit verb) {
 	case muss:
 		return "muss";
 	case sollte:
-		return "soltte";
+		return "sollte";
 	case wird:
 		return "wird";
 	}
