@@ -275,6 +275,7 @@ namespace REQED {
 			this->gegenstandBox->Name = L"gegenstandBox";
 			this->gegenstandBox->Size = System::Drawing::Size(100, 22);
 			this->gegenstandBox->TabIndex = 3;
+			this->gegenstandBox->TextChanged += gcnew System::EventHandler(this, &nfAnfGUI::changed);
 			// 
 			// nfAnfGUI
 			// 
