@@ -133,40 +133,40 @@ void Projekt::exportJSON(string pfad_in) {
 	ofstream save_file(pfad_in);
 	if (save_file.is_open()) {
 		save_file << "{" << "\n";
-		save_file << "\"reqed\" \t: \"1.0\"," << "\n";
-		save_file << "\"system\" \t: \"" + F_anf[0]->getSystem() + "\"," << "\n";
-		save_file << "\"requirements\" : [" << "\n";
+		save_file << "\t\"reqed\" \t: \"1.0\"," << "\n";
+		save_file << "\t\"system\" \t: \"" + F_anf[0]->getSystem() + "\"," << "\n";
+		save_file << "\t\"requirements\" : [" << "\n";
 		for (int i = 0; i != F_anf.size(); i++) {
-			save_file << "	{\n";
+			save_file << "\t\t{\n";
 			
-			save_file << "		\"identifier\" : "+ to_string(i) + ",\n";
-			if (F_anf[i]->getBedingung() != "") {
-				save_file << "		\"condition\"\t : \"" + F_anf[i]->getBedingung() + "\",\n";
+			save_file << "\t\t\t\"identifier\" : "+ to_string(i) + ",\n";
+			if(F_anf[i]->getBedingung() != "") {
+				save_file << "\t\t\t\"condition\"\t : \"" + F_anf[i]->getBedingung() + "\",\n";
 			}
-			save_file << "		\"binding\"\t : "+ verbindlichkeitToNumber(F_anf[i]->getVerbindlichkeit()) + ",\n";
-			save_file << "		\"type\"\t\t : " + funktionalitaetToNumber(F_anf[i]->getFunktionalitaet()) + ",\n";
-			if (funktionalitaetToNumber(F_anf[i]->getFunktionalitaet()) == "Benutzerinteraktion") {
-				save_file << "		\"actor\"\t\t : " + F_anf[i]->getAkteur() + "\n";
+			save_file << "\t\t\t\"binding\"\t : " + verbindlichkeitToNumber(F_anf[i]->getVerbindlichkeit()) + ",\n";
+			save_file << "\t\t\t\"type\"\t\t : " + funktionalitaetToNumber(F_anf[i]->getFunktionalitaet()) + ",\n";
+			if(F_anf[i]->getFunktionalitaet() == Benutzerinteraktion) {
+				save_file << "\t\t\t\"actor\"\t\t : \"" + F_anf[i]->getAkteur() + "\",\n";
 			}
-			save_file << "		\"object\"\t : \""+ F_anf[i]->getObjekt() + "\",\n";
-			save_file << "		\"process\"\t : \"" + F_anf[i]->getProzesswort() + "\"\n";
-			save_file << "	}\n";
+			save_file << "\t\t\t\"object\"\t : \"" + F_anf[i]->getObjekt() + "\",\n";
+			save_file << "\t\t\t\"process\"\t : \"" + F_anf[i]->getProzesswort() + "\"\n";
+			save_file << "\t\t}\n";
 		}
 		for (int i = 0; i != NF_anf.size(); i++) {
-			save_file << "	{\n";
-			save_file << "		\"identifier\"\t  : " + to_string(i+(F_anf.size())) + ",\n";
+			save_file << "\t\t{\n";
+			save_file << "\t\t\t\"identifier\"\t  : " + to_string(i+(F_anf.size())) + ",\n";
 			if (NF_anf[i]->getBedingung() != "") {
-				save_file << "		\"condition\"\t\t  : \"" + NF_anf[i]->getBedingung() + "\",\n";
+				save_file << "\t\t\t\"condition\"\t\t  : \"" + NF_anf[i]->getBedingung() + "\",\n";
 			}
-			save_file << "		\"binding\"\t\t  : " + verbindlichkeitToNumber(NF_anf[i]->getVerbindlichkeit()) + ",\n";
-			save_file << "		\"Property\"\t\t  : \"" + NF_anf[i]->getEigenschaft() + "\", \n";
-			save_file << "		\"observed object\" : \"" + NF_anf[i]->getGegenstand() + "\", \n";
-			save_file << "		\"Operator\"\t\t  : \"" + NF_anf[i]->getOperator() + "\", \n";
-			save_file << "		\"Value\"\t\t\t  : \"" + NF_anf[i]->getWert() + "\" \n";
-			save_file << "	}\n";
+			save_file << "\t\t\t\"binding\"\t\t  : " + verbindlichkeitToNumber(NF_anf[i]->getVerbindlichkeit()) + ",\n";
+			save_file << "\t\t\t\"Property\"\t\t  : \"" + NF_anf[i]->getEigenschaft() + "\", \n";
+			save_file << "\t\t\t\"observed object\" : \"" + NF_anf[i]->getGegenstand() + "\", \n";
+			save_file << "\t\t\t\"Operator\"\t\t  : \"" + NF_anf[i]->getOperator() + "\", \n";
+			save_file << "\t\t\t\"Value\"\t\t\t  : \"" + NF_anf[i]->getWert() + "\" \n";
+			save_file << "\t\t}\n";
 
 		}
-		save_file << "]";
+		save_file << "\t]\n";
 		save_file << "}" ;
 		save_file.close();
 	}
