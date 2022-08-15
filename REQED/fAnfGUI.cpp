@@ -66,6 +66,15 @@ Void fAnfGUI::changed(Object^ sender, EventArgs^ e) {
 			anf += prozesswortBox->Text + ".";
 		}
 	}
+	string tmp = msclr::interop::marshal_as<string>(anf);
+	string anfTmp = "";
+	while(tmp.size() > 120) {
+		size_t pos = tmp.rfind(" ", 120);
+		anfTmp += tmp.substr(0, pos) + "\r\n";
+		tmp = tmp.substr(pos + 1);
+	}
+	anfTmp += tmp;
+	anf = gcnew String(anfTmp.c_str());
 	anforderung->Text = anf;
 }
 
