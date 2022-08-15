@@ -13,7 +13,7 @@ using namespace std;
 
 Projekt::Projekt(string pfad_in, View^ view) {
 	pfad = pfad_in;
-	saved = true ;
+	saved = true;
 	this->view = view;
 }
 
@@ -41,7 +41,9 @@ void Projekt::load() {
 				getline(line_stream, funkt, '#');
 				string verb;
 				getline(line_stream, verb, '#');
-				this->funktionaleAnforderungHinzu(make_shared<FunktionaleAnforderung>(bed, sys, obj, proz, getFunktionalitaetfromNumber(funkt), getVerbindlichkeitfromnumber(verb)));
+				string akt;
+				getline(line_stream, akt, '#');
+				this->funktionaleAnforderungHinzu(make_shared<FunktionaleAnforderung>(bed, sys, obj, proz, getFunktionalitaetfromNumber(funkt), getVerbindlichkeitfromnumber(verb), akt));
 			} else if(read_status == 2) {
 				std::stringstream line_stream(line);
 				string bed;
@@ -56,10 +58,14 @@ void Projekt::load() {
 				getline(line_stream, wert, '#');
 				string verb;
 				getline(line_stream, verb, '#');
+				string akt;
+				getline(line_stream, akt, '#');
 				this->nichtFuntkionaleAnforderungHinzu(make_shared<NichtFunktionaleAnforderung>(bed, geg, eig, oper, wert, getVerbindlichkeitfromnumber(verb)));
 			}
 		}
 		save_file.close();
+		saved = true;
+		view->modelChanged();
 	}
 }
 
@@ -79,6 +85,8 @@ void Projekt::projektSpeichern() {
 			save_file << F_anf[i]->getFunktionalitaet();
 			save_file << "#";
 			save_file << verbindlichkeitToNumber( F_anf[i]->getVerbindlichkeit());
+			save_file << "#";
+			save_file << F_anf[i]->getAkteur();
 			save_file << "#";
 			save_file << "\n";
 		}
@@ -112,7 +120,7 @@ void Projekt::exportTXT(string pfad_in) {
 			save_file << F_anf[i]->toString();
 			save_file << "\n";
 		}
-		save_file << "Nicht Funktionsle Anforderungen:" << "\n";
+		save_file << "\nNicht Funktionsle Anforderungen:" << "\n";
 		for (int i = 0; i != NF_anf.size(); i++) {
 			save_file << NF_anf[i]->toString();
 			save_file << "\n";
@@ -125,37 +133,34 @@ void Projekt::exportJSON(string pfad_in) {
 	ofstream save_file(pfad_in);
 	if (save_file.is_open()) {
 		save_file << "{" << "\n";
-		save_file << "\"reqed\" : \"1.0\"," << "\n";
-		
+		save_file << "\"reqed\" \t: \"1.0\"," << "\n";
+		save_file << "\"system\" \t: \"" + F_anf[0]->getSystem() + "\"," << "\n";
 		save_file << "\"requirements\" : [" << "\n";
 		for (int i = 0; i != F_anf.size(); i++) {
 			save_file << "	{\n";
 			
-			save_file << "		\"identifier\" :"+ to_string(i) + " ,\n";
+			save_file << "		\"identifier\" : "+ to_string(i) + ",\n";
 			if (F_anf[i]->getBedingung() != "") {
-				save_file << "		\"condition\" : \"" + F_anf[i]->getBedingung() + " \",\n";
+				save_file << "		\"condition\"\t : \"" + F_anf[i]->getBedingung() + "\",\n";
 			}
-			save_file << "		\"binding\" : "+ verbindlichkeitToNumber(F_anf[i]->getVerbindlichkeit()) + ",\n";
-			save_file << "		\"type\" : " + funktionalitaetToNumber(F_anf[i]->getFunktionalitaet()) + ",\n";
-			save_file << "		\"system\" : \""+F_anf[i]->getSystem() + "\"," << "\n";
-			if (funktionalitaetToNumber(F_anf[i]->getFunktionalitaet()) == "1") {
-				save_file << "		\"actor\" : \"dem/der Benutzer/-in\",\n";
-			}
-			save_file << "		\"object\" : \""+ F_anf[i]->getObjekt() + "\",\n";
-			save_file << "		\"process\" : \"" + F_anf[i]->getProzesswort() + "\"\n";
+			save_file << "		\"binding\"\t : "+ verbindlichkeitToNumber(F_anf[i]->getVerbindlichkeit()) + ",\n";
+			save_file << "		\"type\"\t\t : " + funktionalitaetToNumber(F_anf[i]->getFunktionalitaet()) + ",\n";
+			save_file << "		\"actor\"\t\t : " + F_anf[i]->getAkteur() + "\n";
+			save_file << "		\"object\"\t : \""+ F_anf[i]->getObjekt() + "\",\n";
+			save_file << "		\"process\"\t : \"" + F_anf[i]->getProzesswort() + "\"\n";
 			save_file << "	}\n";
 		}
 		for (int i = 0; i != NF_anf.size(); i++) {
 			save_file << "	{\n";
-			save_file << "		\"identifier\" :" + to_string(i+(F_anf.size())) + " ,\n";
+			save_file << "		\"identifier\"\t  : " + to_string(i+(F_anf.size())) + ",\n";
 			if (NF_anf[i]->getBedingung() != "") {
-				save_file << "		\"condition\" : \"" + NF_anf[i]->getBedingung() + "\",\n";
+				save_file << "		\"condition\"\t\t  : \"" + NF_anf[i]->getBedingung() + "\",\n";
 			}
-			save_file << "		\"binding\" : " + verbindlichkeitToNumber(NF_anf[i]->getVerbindlichkeit()) + ",\n";
-			save_file << "		\"Property\" : \"" + NF_anf[i]->getEigenschaft() + "\", \n";
+			save_file << "		\"binding\"\t\t  : " + verbindlichkeitToNumber(NF_anf[i]->getVerbindlichkeit()) + ",\n";
+			save_file << "		\"Property\"\t\t  : \"" + NF_anf[i]->getEigenschaft() + "\", \n";
 			save_file << "		\"observed object\" : \"" + NF_anf[i]->getGegenstand() + "\", \n";
-			save_file << "		\"Operator\" : \"" + NF_anf[i]->getOperator() + "\", \n";
-			save_file << "		\"Value\" : \"" + NF_anf[i]->getWert() + "\" \n";
+			save_file << "		\"Operator\"\t\t  : \"" + NF_anf[i]->getOperator() + "\", \n";
+			save_file << "		\"Value\"\t\t\t  : \"" + NF_anf[i]->getWert() + "\" \n";
 			save_file << "	}\n";
 
 		}
@@ -177,7 +182,7 @@ void Projekt::nichtFuntkionaleAnforderungHinzu(shared_ptr<NichtFunktionaleAnford
 	view->modelChanged();
 }
 
-void Projekt::funktionaleAnforderungBearbeiten(int index, string bed, string sys, string obj, string proz, ArtFunktionalitaet funkt, Verbindlichkeit verb) {
+void Projekt::funktionaleAnforderungBearbeiten(int index, string bed, string sys, string obj, string proz, ArtFunktionalitaet funkt, Verbindlichkeit verb, string akt) {
 	shared_ptr<FunktionaleAnforderung> anf = F_anf[index];
 	anf->setBedingung(bed);
 	anf->setSystem(sys);
@@ -185,6 +190,7 @@ void Projekt::funktionaleAnforderungBearbeiten(int index, string bed, string sys
 	anf->setProzesswort(proz);
 	anf->setFunktionalitaet(funkt);
 	anf->setVerbindlichkeit(verb);
+	anf->setAkteur(akt);
 	saved = false;
 	view->modelChanged();
 }
@@ -214,7 +220,6 @@ void Projekt::nichtFunktionaleAnforderungloeschen(int index) {
 }
 
 bool Projekt::isSaved() {
-	
 	return saved;
 }
 

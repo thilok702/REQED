@@ -8,7 +8,7 @@ enum ArtFunktionalitaet {
 static std::string funktionalitaetToString(ArtFunktionalitaet funk) {
 	switch(funk) {
 	case Benutzerinteraktion:
-		return "dem/der Benutzer/-in die Möglichkeit bieten";
+		return "die Möglichkeit bieten";
 	case Schnittstellenanforderung:
 		return "fähig sein";
 	}

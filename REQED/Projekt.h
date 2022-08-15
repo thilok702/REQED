@@ -24,7 +24,7 @@ public:
 	void exportJSON(std::string pfad);
 	void funktionaleAnforderungHinzu(std::shared_ptr<FunktionaleAnforderung> anf);
 	void nichtFuntkionaleAnforderungHinzu(std::shared_ptr<NichtFunktionaleAnforderung> anf);
-	void funktionaleAnforderungBearbeiten(int index, std::string bed, std::string sys, std::string obj, std::string proz, ArtFunktionalitaet funkt, Verbindlichkeit verb);
+	void funktionaleAnforderungBearbeiten(int index, std::string bed, std::string sys, std::string obj, std::string proz, ArtFunktionalitaet funkt, Verbindlichkeit verb, std::string akt);
 	void nichtFunktionaleAnforderungBearbeiten(int index, std::string bed, std::string geg, std::string eig, std::string oper, std::string wert, Verbindlichkeit verb);
 	void funktionaleAnforderungloeschen(int index);
 	void nichtFunktionaleAnforderungloeschen(int index);

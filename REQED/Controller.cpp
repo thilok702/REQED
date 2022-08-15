@@ -27,13 +27,13 @@ void Controller::processInput(int methode, string args[]) {
 		aktProjekt->exportJSON(args[0]);
 		break;
 	case 3:
-		aktProjekt->funktionaleAnforderungHinzu(make_shared<FunktionaleAnforderung>(args[0], args[1], args[2], args[3], getFunktionalitaet(args[4]), getVerbindlichkeit(args[5])));
+		aktProjekt->funktionaleAnforderungHinzu(make_shared<FunktionaleAnforderung>(args[0], args[1], args[2], args[3], getFunktionalitaet(args[4]), getVerbindlichkeit(args[5]), args[6]));
 		break;
 	case 4:
 		aktProjekt->nichtFuntkionaleAnforderungHinzu(make_shared<NichtFunktionaleAnforderung>(args[0], args[1], args[2], args[3], args[4], getVerbindlichkeit(args[5])));
 		break;
 	case 5:
-		aktProjekt->funktionaleAnforderungBearbeiten(stoi(args[0]), args[1], args[2], args[3], args[4], getFunktionalitaet(args[5]), getVerbindlichkeit(args[6]));
+		aktProjekt->funktionaleAnforderungBearbeiten(stoi(args[0]), args[1], args[2], args[3], args[4], getFunktionalitaet(args[5]), getVerbindlichkeit(args[6]), args[7]);
 		break;
 	case 6:
 		aktProjekt->nichtFunktionaleAnforderungBearbeiten(stoi(args[0]), args[1], args[2], args[3], args[4], args[5], getVerbindlichkeit(args[6]));

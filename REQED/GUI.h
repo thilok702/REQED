@@ -242,6 +242,7 @@ namespace REQED {
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedDialog;
 			this->MaximizeBox = false;
 			this->Name = L"GUI";
+			this->ShowIcon = false;
 			this->SizeGripStyle = System::Windows::Forms::SizeGripStyle::Hide;
 			this->Text = L"REQED";
 			this->FormClosing += gcnew System::Windows::Forms::FormClosingEventHandler(this, &GUI::GUI_FormClosing);

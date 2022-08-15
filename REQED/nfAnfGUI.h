@@ -300,7 +300,9 @@ namespace REQED {
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedSingle;
 			this->MaximizeBox = false;
 			this->Name = L"nfAnfGUI";
-			this->Text = L"nfAnfGUI";
+			this->ShowIcon = false;
+			this->SizeGripStyle = System::Windows::Forms::SizeGripStyle::Hide;
+			this->Text = L"nicht-funktionale Anforderung";
 			this->Load += gcnew System::EventHandler(this, &nfAnfGUI::nfAnfGUI_Load);
 			this->ResumeLayout(false);
 			this->PerformLayout();

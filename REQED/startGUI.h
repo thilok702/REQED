@@ -117,6 +117,8 @@ namespace REQED {
 			this->Controls->Add(this->oeffnenButton);
 			this->Controls->Add(this->message);
 			this->Name = L"startGUI";
+			this->ShowIcon = false;
+			this->SizeGripStyle = System::Windows::Forms::SizeGripStyle::Hide;
 			this->Text = L"REQED";
 			this->FormClosed += gcnew System::Windows::Forms::FormClosedEventHandler(this, &startGUI::startGUI_FormClosed);
 			this->ResumeLayout(false);
