@@ -145,7 +145,9 @@ void Projekt::exportJSON(string pfad_in) {
 			}
 			save_file << "		\"binding\"\t : "+ verbindlichkeitToNumber(F_anf[i]->getVerbindlichkeit()) + ",\n";
 			save_file << "		\"type\"\t\t : " + funktionalitaetToNumber(F_anf[i]->getFunktionalitaet()) + ",\n";
-			save_file << "		\"actor\"\t\t : " + F_anf[i]->getAkteur() + "\n";
+			if (funktionalitaetToNumber(F_anf[i]->getFunktionalitaet()) == "Benutzerinteraktion") {
+				save_file << "		\"actor\"\t\t : " + F_anf[i]->getAkteur() + "\n";
+			}
 			save_file << "		\"object\"\t : \""+ F_anf[i]->getObjekt() + "\",\n";
 			save_file << "		\"process\"\t : \"" + F_anf[i]->getProzesswort() + "\"\n";
 			save_file << "	}\n";
