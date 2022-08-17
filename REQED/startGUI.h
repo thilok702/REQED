@@ -60,6 +60,7 @@ namespace REQED {
 		/// </summary>
 		void InitializeComponent(void)
 		{
+			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(startGUI::typeid));
 			this->message = (gcnew System::Windows::Forms::Label());
 			this->oeffnenButton = (gcnew System::Windows::Forms::Button());
 			this->neuButton = (gcnew System::Windows::Forms::Button());
@@ -116,8 +117,8 @@ namespace REQED {
 			this->Controls->Add(this->neuButton);
 			this->Controls->Add(this->oeffnenButton);
 			this->Controls->Add(this->message);
+			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
 			this->Name = L"startGUI";
-			this->ShowIcon = false;
 			this->SizeGripStyle = System::Windows::Forms::SizeGripStyle::Hide;
 			this->Text = L"REQED";
 			this->FormClosed += gcnew System::Windows::Forms::FormClosedEventHandler(this, &startGUI::startGUI_FormClosed);

@@ -192,11 +192,6 @@ Void GUI::GUI_Load(System::Object^ sender, System::EventArgs^ e) {
                 string leer[1] = {""};
                 controller->processInput(9, leer);
             } else {
-                StreamWriter^ sw;
-                if((sw = gcnew StreamWriter("letztesProjekt.txt")) != nullptr) {
-                    sw->WriteLine("");
-                    sw->Close();
-                }
                 startGUI^ start = gcnew startGUI(this, controller);
                 start->ShowDialog();
             }
@@ -252,6 +247,8 @@ Void GUI::neuToolStripMenuItem_Click(Object^ sender, EventArgs^ e) {
             sw->Close();
         }
         projekt = controller->openProject(msclr::interop::marshal_as<string>(sfd->FileName), this).get();
+        string leer[1] = {""};
+        controller->processInput(9, leer);
     }
 }
 

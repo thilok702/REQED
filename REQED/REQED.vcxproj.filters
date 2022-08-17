@@ -82,5 +82,6 @@
     <Text Include="tempoutput.txt">
       <Filter>Resource Files</Filter>
     </Text>
+    <Text Include="letztesProjekt.txt" />
   </ItemGroup>
 </Project>

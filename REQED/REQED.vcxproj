@@ -72,6 +72,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <Text Include="letztesProjekt.txt" />
     <Text Include="tempoutput.txt" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
