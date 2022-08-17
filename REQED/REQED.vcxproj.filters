@@ -78,10 +78,4 @@
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
-  <ItemGroup>
-    <Text Include="tempoutput.txt">
-      <Filter>Resource Files</Filter>
-    </Text>
-    <Text Include="letztesProjekt.txt" />
-  </ItemGroup>
 </Project>

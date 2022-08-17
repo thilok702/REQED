@@ -180,25 +180,32 @@ Void GUI::buttonLoeschen_Click(Object^ sender, EventArgs^ e) {
     
 
 Void GUI::GUI_Load(System::Object^ sender, System::EventArgs^ e) {
-    StreamReader^ sr;
-    if((sr = gcnew StreamReader("letztesProjekt.txt")) != nullptr) {
-        String^ tmp = sr->ReadLine();
-        sr->Close();
-        if(tmp != nullptr && tmp->Length > 0) {
-            ifstream f(msclr::interop::marshal_as<string>(tmp).c_str());
-            f.close();
-            if(f.good()) {
-                projekt = controller->openProject(msclr::interop::marshal_as<string>(tmp), this).get();
-                string leer[1] = {""};
-                controller->processInput(9, leer);
+    if(File::Exists("letztesProjekt.txt")) {
+        StreamReader^ sr;
+        if((sr = gcnew StreamReader("letztesProjekt.txt")) != nullptr) {
+            String^ tmp = sr->ReadLine();
+            sr->Close();
+            if(tmp != nullptr && tmp->Length > 0) {
+                ifstream f(msclr::interop::marshal_as<string>(tmp).c_str());
+                f.close();
+                if(f.good()) {
+                    projekt = controller->openProject(msclr::interop::marshal_as<string>(tmp), this).get();
+                    string leer[1] = {""};
+                    controller->processInput(9, leer);
+                } else {
+                    startGUI^ start = gcnew startGUI(this, controller);
+                    start->ShowDialog();
+                }
             } else {
                 startGUI^ start = gcnew startGUI(this, controller);
                 start->ShowDialog();
             }
-        } else {
-            startGUI^ start = gcnew startGUI(this, controller);
-            start->ShowDialog();
-        }
+        } 
+    } else {
+        FileStream^ fs = File::Create("letztesProjekt.txt");
+        fs->Close();
+        startGUI^ start = gcnew startGUI(this, controller);
+        start->ShowDialog();
     }
 }
 
@@ -241,11 +248,8 @@ Void GUI::neuToolStripMenuItem_Click(Object^ sender, EventArgs^ e) {
     sfd->OverwritePrompt = true;
     sfd->AddExtension = true;
     if(sfd->ShowDialog() == Windows::Forms::DialogResult::OK) {
-        StreamWriter^ sw;
-        if((sw = gcnew StreamWriter(sfd->FileName)) != nullptr) {
-            sw->WriteLine("");
-            sw->Close();
-        }
+        FileStream^ fs = File::Create("letztesProjekt.txt");
+        fs->Close();
         projekt = controller->openProject(msclr::interop::marshal_as<string>(sfd->FileName), this).get();
         string leer[1] = {""};
         controller->processInput(9, leer);
