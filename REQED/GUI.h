@@ -230,7 +230,7 @@ namespace REQED {
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::None;
 			this->AutoScroll = true;
 			this->BackColor = System::Drawing::Color::White;
-			this->ClientSize = System::Drawing::Size(834, 561);
+			this->ClientSize = System::Drawing::Size(834, 761);
 			this->Controls->Add(this->fAnfButton);
 			this->Controls->Add(this->nfAnfButton);
 			this->Controls->Add(this->nfAnf);
